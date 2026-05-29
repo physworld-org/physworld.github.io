@@ -6,22 +6,50 @@ import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
 
 const organizers = [
-  { name: "Kaichen Zhou", affiliation: "Harvard / MIT Media Lab", image: "/assets/profile_organizer/kaichen.jpg", url: "https://kaichen-z.github.io/" },
-  { name: "Fangneng Zhan", affiliation: "MIT", image: "/assets/profile_organizer/fangneng.png", url: "https://fnzhan.com/" },
-  { name: "Rao Fu", affiliation: "Brown University", image: "/assets/profile_organizer/raofu.png", url: "https://freddierao.github.io/" },
+  {
+    name: "Ashia C. Wilson",
+    affiliation: "Lister Brothers Career Development Associate Professor, MIT",
+    image: "/assets/profile_organizer/ashia.png",
+    url: "https://www.ashiawilson.com/",
+  },
+  {
+    name: "Paul Liang",
+    affiliation: "Assistant Professor, MIT Media Lab and MIT EECS",
+    image: "/assets/profile_speaker/paul.jpg",
+    url: "https://pliang279.github.io/",
+  },
+  {
+    name: "Mengyu Wang",
+    affiliation: "Associate Professor of Ophthalmology, Harvard Medical School",
+    image: "/assets/profile_organizer/mengyu.jpg",
+    url: "https://wang.hms.harvard.edu/team/dr-wang/",
+  },
+  {
+    name: "Shangzhe Wu",
+    affiliation: "Assistant Professor, Department of Engineering, University of Cambridge",
+    image: "/assets/profile_organizer/shangzhe.jpg",
+    url: "https://www.elliottwu.com/",
+  },
 ];
 
-const committee = [
-  { name: "Mengyu Wang", affiliation: "Harvard University", image: "/assets/profile_organizer/mengyu.jpg", url: "https://wang.hms.harvard.edu/team/dr-wang/" },
-  { name: "Paul Liang", affiliation: "MIT Media Lab / MIT EECS", image: "/assets/profile_speaker/paul.jpg", url: "https://pliang279.github.io/" },
+/*
+const additionalOrganizers = [
+  { name: "Kaichen Zhou", affiliation: "TBD", image: "/assets/profile_organizer/kaichen.jpg", url: "https://kaichen-z.github.io/" },
+  { name: "Jianqing Zheng", affiliation: "TBD", image: "", url: "" },
+  { name: "Congyue Deng", affiliation: "TBD", image: "", url: "" },
+  { name: "Rao Fu", affiliation: "TBD", image: "/assets/profile_organizer/raofu.png", url: "https://freddierao.github.io/" },
+  { name: "Ruojin Cai", affiliation: "TBD", image: "", url: "" },
+  { name: "Fangneng Zhan", affiliation: "TBD", image: "/assets/profile_organizer/fangneng.png", url: "https://fnzhan.com/" },
+  { name: "David Dai", affiliation: "TBD", image: "", url: "" },
+  { name: "Tiange Xiang", affiliation: "TBD", image: "", url: "" },
+  { name: "Yining Hong", affiliation: "TBD", image: "/assets/profile_organizer/yining.jpg", url: "" },
+  { name: "Jieneng Chen", affiliation: "TBD", image: "", url: "" },
+  { name: "Xinhai Chang", affiliation: "TBD", image: "/assets/profile_coordinator/xinhai.png", url: "https://chang-xinhai.github.io/" },
 ];
-
-const coordinator = [
-  { name: "Xinhai Chang", affiliation: "Peking University", image: "/assets/profile_coordinator/xinhai.png", url: "https://chang-xinhai.github.io/" },
-];
+*/
 ---
 
-<Layout>
+<Layout title="PhysWorld - Physical World Understanding" description="NeurIPS 2026 workshop proposal on physical world understanding through geometry, characteristics, and multimodal sensing.">
   <Nav currentPage="/" />
 
   <!-- ═══════════════════════ HERO ═══════════════════════ -->
@@ -33,15 +61,15 @@ const coordinator = [
     <div class="hero-radial" aria-hidden="true"></div>
 
     <div class="hero-content container">
-      <p class="eyebrow reveal">Non-profit seminar organized by researchers working on general world models</p>
-      <h1 class="reveal">General World Model</h1>
+      <p class="eyebrow reveal">NeurIPS 2026 workshop proposal</p>
+      <h1 class="reveal">Physical World Understanding</h1>
       <p class="lead reveal">
-        Explore foundational concepts, recent research developments, and open challenges in building general world models.
+        Beyond pixels: understanding the physical world through geometry, dynamics, characteristics, and multimodal sensing.
       </p>
       <div class="cta-row reveal">
-        <a class="btn primary" href="/cfp">Call for Talks</a>
+        <a class="btn primary" href="/cfp">Workshop Proposal</a>
         <a class="btn ghost" href="#organizers">Meet Organizers</a>
-        <a class="btn ghost" href="/speakers">Previous Speakers</a>
+        <a class="btn ghost" href="/speakers">Invited Speakers</a>
       </div>
     </div>
   </section>
@@ -49,20 +77,21 @@ const coordinator = [
   <!-- ═══════════════════════ OVERVIEW ═══════════════════════ -->
   <section id="overview" class="section">
     <div class="container">
-      <SectionHeading title="Workshop Overview" />
+      <SectionHeading title="Proposal Overview" />
       <div class="glass reveal overview-content">
         <p>
-          A <strong>general world model</strong> aims to learn a unified representation of how the world evolves
-          over time, capturing both physical dynamics and scene structure. Unlike task-specific models that focus on
-          narrow prediction objectives, a general world model seeks to understand multi-modal information—such as
-          RGB, depth, geometry, and actions—and predict future states in a coherent and physically consistent manner.
+          <strong>PhysWorld</strong> is a proposed 1st Workshop on Physical World Understanding: Geometry,
+          Characteristics, and Multimodal Sensing. The proposal asks how AI systems can perceive, represent,
+          and reason about the physical world beyond visual appearance.
         </p>
         <p>
-          In robotics and embodied AI, general world models are particularly important because they enable
-          long-horizon planning, counterfactual reasoning, and adaptation to novel scenarios. Rather than memorizing
-          behavior patterns, the model learns underlying dynamics, allowing it to generalize across tasks and domains.
-          Recent advances in large-scale video diffusion models, geometry-aware representations, and multimodal learning
-          have significantly improved world modeling capabilities.
+          The workshop centers on three coupled pillars: physical geometry, physical characteristics, and physical
+          sensors. It is designed to bring together computer vision, robotics, graphics, multimodal learning,
+          haptics, audio, and physics-based simulation communities before their benchmarks and protocols fragment.
+        </p>
+        <p>
+          The proposed full-day format includes invited talks with moderated Q&A, contributed-paper orals,
+          posters with live demos, and a synthesis panel spanning geometry, dynamics, materials, and sensing.
         </p>
       </div>
     </div>
@@ -72,11 +101,11 @@ const coordinator = [
   <section id="opportunities" class="section">
     <div class="container">
       <div class="highlight-box reveal">
-        <div class="highlight-badge">✦ Opportunities</div>
+        <div class="highlight-badge">Proposal Snapshot</div>
         <p>
-          We enthusiastically invite you to engage in discussions and explore potential collaborations in any capacity.
-          We are also welcoming computational resources support from industry. If you're interested in connecting or
-          partnering with us, please don't hesitate to reach out via email.
+          NeurIPS 2026 workshop, full-day format, expected attendance of 200-300 researchers,
+          non-archival submissions, livestreaming and recording requested, and a program designed around discussion
+          across geometry, characteristics, and multimodal sensing.
         </p>
       </div>
     </div>
@@ -86,8 +115,13 @@ const coordinator = [
   <section id="announcement" class="section">
     <div class="container">
       <div class="highlight-box highlight-box--accent reveal">
-        <div class="highlight-badge">📢 Announcement</div>
-        <p>Next event will be announced soon.</p>
+        <div class="highlight-badge">Topics</div>
+        <ul class="topic-list">
+          <li><strong>Physical Geometry:</strong> 3D/4D reconstruction, articulated and deformable scene understanding, and geometry-aware world models.</li>
+          <li><strong>Physical Characteristics:</strong> material properties, contact-rich interactions, dynamics, deformability, affordances, and differentiable simulation.</li>
+          <li><strong>Physical Sensors:</strong> tactile, force/torque, proprioception, RF, audio, depth, IMU, event-based signals, and sensor fusion.</li>
+          <li><strong>Cross-cutting:</strong> embodied world models, sim-to-real transfer, multimodal simulators, benchmarks, evaluation, and responsible deployment.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -95,26 +129,12 @@ const coordinator = [
   <!-- ═══════════════════════ ORGANIZERS ═══════════════════════ -->
   <section id="organizers" class="section">
     <div class="container">
-      <SectionHeading title="Team" subtitle="The people behind the General World Model seminar series" />
+      <SectionHeading title="Team" subtitle="The currently displayed organizers for the PhysWorld proposal" />
 
       <div class="team-group">
         <h3 class="group-label reveal">Organizers</h3>
         <div class="person-grid reveal-stagger">
           {organizers.map((p) => <PersonCard {...p} />)}
-        </div>
-      </div>
-
-      <div class="team-group">
-        <h3 class="group-label reveal">Committee</h3>
-        <div class="person-grid reveal-stagger">
-          {committee.map((p) => <PersonCard {...p} />)}
-        </div>
-      </div>
-
-      <div class="team-group">
-        <h3 class="group-label reveal">Coordinator</h3>
-        <div class="person-grid reveal-stagger">
-          {coordinator.map((p) => <PersonCard {...p} />)}
         </div>
       </div>
     </div>
@@ -125,14 +145,12 @@ const coordinator = [
     <div class="container">
       <SectionHeading title="Sponsors" />
       <div class="sponsor-callout glass reveal">
-        <h3>Sponsorship Opportunities</h3>
+        <h3>Sponsorship and Awards</h3>
         <p>
-          Empower the next generation of researchers by sponsoring speaker travel and high-quality onsite hospitality,
-          while gaining exclusive access to a premier community of embodied AI experts and world-model innovators — reach out to partner with us.
+          CyberBrain is listed in the proposal as a confirmed sponsor. Sponsor support will fund the Best Paper Award, Best Student Paper Award, student travel grants for underrepresented attendees, and on-site logistics.
         </p>
       </div>
       <div class="sponsor-logos reveal">
-        <img src="/assets/sponsor/Meta-New-Logo.png" alt="Meta" class="sponsor-logo" />
         <img src="/assets/sponsor/cyberbrain_new.png" alt="Cyberbrain" class="sponsor-logo" />
       </div>
     </div>
@@ -146,7 +164,7 @@ const coordinator = [
         <p class="contact-email">
           <a href="mailto:general_world@outlook.com">general_world@outlook.com</a>
         </p>
-        <p class="muted">Questions, sponsorship, or program committee interest.</p>
+        <p class="muted">Questions, sponsorship, program committee interest, or proposal coordination.</p>
       </div>
     </div>
   </section>
@@ -414,5 +432,21 @@ const coordinator = [
     .person-grid {
       justify-content: center;
     }
+  }
+
+
+  .topic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .topic-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .topic-list li:last-child {
+    border-bottom: none;
   }
 </style>

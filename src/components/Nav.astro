@@ -6,10 +6,10 @@ const { currentPage = "/" } = Astro.props;
 
 const links = [
   { href: "/#overview", label: "Overview" },
-  { href: "/cfp", label: "Call for Talks" },
+  { href: "/cfp", label: "Proposal" },
   { href: "/#organizers", label: "Organizers" },
-  { href: "/speakers", label: "Speakers" },
-  { href: "/news", label: "News" },
+  { href: "/speakers", label: "Invited Speakers" },
+  { href: "/news", label: "Updates" },
   { href: "/#sponsors", label: "Sponsors" },
 ];
 ---
@@ -17,13 +17,13 @@ const links = [
 <header class="topbar">
   <div class="nav-container">
     <nav class="nav-island">
-      <a class="brand" href="/" aria-label="General World Model home">
+      <a class="brand" href="/" aria-label="PhysWorld home">
         <span class="brand-mark" aria-hidden="true">
           <span class="brand-mark-core"></span>
           <span class="brand-mark-ring"></span>
           <span class="brand-mark-halo"></span>
         </span>
-        <span class="brand-text">General World Model</span>
+        <span class="brand-text">PhysWorld</span>
       </a>
 
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
