@@ -1,46 +1,33 @@
-# Astro Starter Kit: Basics
+# PhysWorld Workshop Website
+
+Website for the PhysWorld workshop proposal: **Physical World Understanding: Geometry, Characteristics, and Multimodal Sensing**.
+
+Live site: https://physworld-org.github.io/physworld.github.io/
+
+## Development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The local dev server runs at `http://localhost:4321/`.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Deployment
 
-## 🧞 Commands
+The site is built with Astro and deployed to GitHub Pages through `.github/workflows/deploy.yml`.
 
-All commands are run from the root of the project, from a terminal:
+Because this is a project page under `physworld-org/physworld.github.io`, Astro uses:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```js
+base: "/physworld.github.io"
+```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Keep this base path unless the repository is renamed to an organization/user Pages root repo or moved behind a custom domain.
