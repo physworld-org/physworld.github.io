@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <Layout title="Workshop Proposal | PhysWorld" description="PhysWorld workshop proposal: Physical World Understanding through geometry, characteristics, and multimodal sensing.">
@@ -18,8 +19,8 @@ import Footer from "../components/Footer.astro";
         The 1st Workshop on Physical World Understanding: Geometry, Characteristics, and Multimodal Sensing.
       </p>
       <div class="cta-row reveal">
-        <a class="btn ghost" href="/#organizers">Organizers</a>
-        <a class="btn ghost" href="/#contact">Contact</a>
+        <a class="btn ghost" href={withBase("#organizers")}>Organizers</a>
+        <a class="btn ghost" href={withBase("#contact")}>Contact</a>
       </div>
     </div>
   </section>
@@ -72,7 +73,7 @@ import Footer from "../components/Footer.astro";
 
   <div class="container">
     <div class="back-link reveal">
-      <a href="/">Back to main site</a>
+      <a href={withBase()}>Back to main site</a>
     </div>
   </div>
 

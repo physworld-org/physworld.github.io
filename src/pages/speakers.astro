@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/paths";
 
 const speakerTracks = [
   { track: "Physical Geometry", summary: "3D/4D reconstruction, articulated and deformable scene modeling, and physically grounded view synthesis." },
@@ -25,8 +26,8 @@ const speakerTracks = [
         The proposal targets 8 invited speakers across geometry, characteristics, sensors, and cross-cutting physical AI.
       </p>
       <div class="cta-row reveal">
-        <a class="btn ghost" href="/">Home</a>
-        <a class="btn ghost" href="/#contact">Contact</a>
+        <a class="btn ghost" href={withBase()}>Home</a>
+        <a class="btn ghost" href={withBase("#contact")}>Contact</a>
       </div>
     </div>
   </section>
@@ -60,7 +61,7 @@ const speakerTracks = [
 
   <div class="container">
     <div class="back-link reveal">
-      <a href="/">Back to main site</a>
+      <a href={withBase()}>Back to main site</a>
     </div>
   </div>
 

@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/paths";
 
 const newsItems = [
   { date: "Proposal Draft", title: "PhysWorld workshop proposal prepared", author: "PhysWorld Organizers", summary: "The proposal frames physical world understanding around geometry, characteristics, and multimodal sensing.", tag: "Proposal" },
@@ -24,8 +25,8 @@ const newsItems = [
         Proposal status, program notes, and future workshop announcements.
       </p>
       <div class="cta-row reveal">
-        <a class="btn ghost" href="/">Home</a>
-        <a class="btn ghost" href="/#contact">Contact</a>
+        <a class="btn ghost" href={withBase()}>Home</a>
+        <a class="btn ghost" href={withBase("#contact")}>Contact</a>
       </div>
     </div>
   </section>
@@ -53,7 +54,7 @@ const newsItems = [
 
   <div class="container">
     <div class="back-link reveal">
-      <a href="/">Back to main site</a>
+      <a href={withBase()}>Back to main site</a>
     </div>
   </div>
 

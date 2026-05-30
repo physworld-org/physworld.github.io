@@ -2,22 +2,23 @@
 interface Props {
   currentPage?: string;
 }
+import { withBase } from "../lib/paths";
 const { currentPage = "/" } = Astro.props;
 
 const links = [
-  { href: "/#overview", label: "Overview" },
-  { href: "/cfp", label: "Proposal" },
-  { href: "/#organizers", label: "Organizers" },
-  { href: "/speakers", label: "Invited Speakers" },
-  { href: "/news", label: "Updates" },
-  { href: "/#sponsors", label: "Sponsors" },
+  { href: withBase("#overview"), current: "/#overview", label: "Overview" },
+  { href: withBase("cfp"), current: "/cfp", label: "Proposal" },
+  { href: withBase("#organizers"), current: "/#organizers", label: "Organizers" },
+  { href: withBase("speakers"), current: "/speakers", label: "Invited Speakers" },
+  { href: withBase("news"), current: "/news", label: "Updates" },
+  { href: withBase("#sponsors"), current: "/#sponsors", label: "Sponsors" },
 ];
 ---
 
 <header class="topbar">
   <div class="nav-container">
     <nav class="nav-island">
-      <a class="brand" href="/" aria-label="PhysWorld home">
+      <a class="brand" href={withBase()} aria-label="PhysWorld home">
         <span class="brand-mark" aria-hidden="true">
           <span class="brand-mark-core"></span>
           <span class="brand-mark-ring"></span>
@@ -34,7 +35,7 @@ const links = [
         {links.map((link) => (
           <a
             href={link.href}
-            class:list={[{ active: currentPage === link.href }]}
+            class:list={[{ active: currentPage === link.current }]}
           >
             {link.label}
           </a>
@@ -42,7 +43,7 @@ const links = [
       </div>
     </nav>
 
-    <a href="/#contact" class="contact-pill-standalone shadow-glow">Contact</a>
+    <a href={withBase("#contact")} class="contact-pill-standalone shadow-glow">Contact</a>
   </div>
 </header>
 
