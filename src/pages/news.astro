@@ -6,35 +6,60 @@ import Footer from "../components/Footer.astro";
 import { withBase } from "../lib/paths";
 
 const newsItems = [
-  { date: "Proposal Draft", title: "PhysWorld workshop proposal prepared", author: "PhysWorld Organizers", summary: "The proposal frames physical world understanding around geometry, characteristics, and multimodal sensing.", tag: "Proposal" },
-  { date: "Planned", title: "OpenReview submission process", author: "Program Committee", summary: "The proposal plans double-blind review, at least 3 reviewers per paper, and non-archival posting of accepted work.", tag: "Review" },
-  { date: "Planned", title: "Posters and live demos", author: "Workshop Team", summary: "The proposed full-day schedule includes posters, live sensing demos, invited talks, contributed orals, and a synthesis panel.", tag: "Program" },
+  {
+    date: "2026-06-21",
+    title: "Final proposal details reflected on the website",
+    author: "PhysWorldAI Organizers",
+    summary:
+      "The site now reflects the final PDF: PhysWorldAI, half-day format, 8 organizers, 4 planned invited speakers, and 2077AI plus CyberBrain sponsorship.",
+    tag: "Proposal",
+  },
+  {
+    date: "August 29, 2026",
+    title: "Submission deadline",
+    author: "Program Committee",
+    summary:
+      "The proposal plans long papers up to 8 pages and extended abstracts up to 4 pages, reviewed double-blind through OpenReview.",
+    tag: "CFP",
+  },
+  {
+    date: "September 26, 2026",
+    title: "Notification deadline",
+    author: "Program Committee",
+    summary:
+      "Notifications are scheduled for September 26, 2026, aligned with the NeurIPS hard contributor-decision deadline.",
+    tag: "Review",
+  },
+  {
+    date: "October 26, 2026",
+    title: "Camera-ready deadline",
+    author: "Workshop Team",
+    summary:
+      "Accepted non-archival papers are posted on the workshop website, while authors remain free to revise and submit elsewhere.",
+    tag: "Program",
+  },
 ];
 ---
 
-<Layout title="Updates | PhysWorld" description="Updates for the PhysWorld workshop proposal.">
+<Layout title="Updates | PhysWorldAI" description="Updates for the PhysWorldAI workshop proposal.">
   <Nav currentPage="/news" />
 
-  <!-- Mini Hero -->
   <section class="hero-small">
     <div class="hero-small-bg" aria-hidden="true"></div>
     <div class="hero-small-content container">
       <p class="eyebrow reveal">Workshop proposal updates</p>
       <h1 class="reveal">Updates</h1>
-      <p class="lead reveal">
-        Proposal status, program notes, and future workshop announcements.
-      </p>
+      <p class="lead reveal">Proposal status, call-for-papers dates, program notes, and workshop announcements.</p>
       <div class="cta-row reveal">
         <a class="btn ghost" href={withBase()}>Home</a>
-        <a class="btn ghost" href={withBase("#contact")}>Contact</a>
+        <a class="btn ghost" href={withBase("cfp")}>Proposal</a>
       </div>
     </div>
   </section>
 
-  <!-- News Grid -->
   <section class="section">
     <div class="container">
-      <SectionHeading title="Recent Updates" subtitle="Current proposal-stage information" />
+      <SectionHeading title="Recent Updates" subtitle="Dates and status from the final proposal" />
 
       <div class="news-grid">
         {newsItems.map((item) => (
@@ -62,7 +87,6 @@ const newsItems = [
 </Layout>
 
 <style>
-  /* Mini hero */
   .hero-small {
     position: relative;
     padding: 10rem 0 5rem;
@@ -73,7 +97,9 @@ const newsItems = [
   .hero-small-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(100, 224, 200, 0.08) 0%, transparent 70%);
+    background:
+      linear-gradient(135deg, rgba(105, 214, 200, 0.1), transparent 42%),
+      linear-gradient(225deg, rgba(255, 143, 122, 0.08), transparent 46%);
     z-index: 0;
   }
 
@@ -85,7 +111,7 @@ const newsItems = [
 
   .eyebrow {
     font-size: 0.82rem;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
@@ -116,47 +142,46 @@ const newsItems = [
     flex-wrap: wrap;
   }
 
-  /* News grid */
   .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    max-width: 1080px;
     margin: 0 auto;
   }
 
   .news-card {
     display: flex;
     flex-direction: column;
-    transition: all var(--transition);
+    transition: transform var(--transition), border-color var(--transition);
   }
   .news-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(100, 224, 200, 0.2);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    border-color: rgba(105, 214, 200, 0.24);
   }
 
   .news-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 
   .news-date {
     font-size: 0.82rem;
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .news-tag {
     font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    background: rgba(100, 224, 200, 0.1);
+    font-weight: 800;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(105, 214, 200, 0.1);
     color: var(--mint);
-    border: 1px solid rgba(100, 224, 200, 0.15);
+    border: 1px solid rgba(105, 214, 200, 0.18);
   }
 
   .news-title {
@@ -179,7 +204,6 @@ const newsItems = [
     flex: 1;
   }
 
-  /* Back link */
   .back-link {
     padding: 2rem 0 1rem;
   }
@@ -190,11 +214,5 @@ const newsItems = [
   }
   .back-link a:hover {
     color: var(--accent-bright);
-  }
-
-  @media (max-width: 768px) {
-    .news-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

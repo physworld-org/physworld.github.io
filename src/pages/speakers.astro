@@ -4,54 +4,65 @@ import Nav from "../components/Nav.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
 import { withBase } from "../lib/paths";
+import { schedule, speakers, workshop } from "../data/workshop";
 
-const speakerTracks = [
-  { track: "Physical Geometry", summary: "3D/4D reconstruction, articulated and deformable scene modeling, and physically grounded view synthesis." },
-  { track: "Physical Characteristics", summary: "Material properties, dynamics, affordances, contact-rich interaction, and differentiable simulation." },
-  { track: "Physical Sensors", summary: "Tactile, force/torque, proprioception, RF, audio, depth, IMU, event-based sensing, and sensor fusion." },
-  { track: "Cross-cutting", summary: "Embodied world models, robotics, multimodal simulators, and physically grounded reasoning." },
-];
+const speakerCards = speakers.map((speaker) => ({
+  ...speaker,
+  image: withBase(speaker.image),
+}));
 ---
 
-<Layout title="Invited Speakers | PhysWorld" description="Invited speaker plan for the PhysWorld workshop proposal.">
+<Layout title="Invited Speakers | PhysWorldAI" description="Invited speaker plan for the PhysWorldAI workshop proposal.">
   <Nav currentPage="/speakers" />
 
-  <!-- Mini Hero -->
   <section class="hero-small">
     <div class="hero-small-bg" aria-hidden="true"></div>
     <div class="hero-small-content container">
-      <p class="eyebrow reveal">Proposed invited program</p>
+      <p class="eyebrow reveal">Final proposal speaker plan</p>
       <h1 class="reveal">Invited Speakers</h1>
       <p class="lead reveal">
-        The proposal targets 8 invited speakers across geometry, characteristics, sensors, and cross-cutting physical AI.
+        The proposal plans four invited speakers spanning physical simulation, 3D/4D geometry, embodied intelligence,
+        robot learning, and multimodal perception.
       </p>
       <div class="cta-row reveal">
         <a class="btn ghost" href={withBase()}>Home</a>
-        <a class="btn ghost" href={withBase("#contact")}>Contact</a>
+        <a class="btn ghost" href={withBase("cfp")}>Proposal</a>
       </div>
     </div>
   </section>
 
-  <!-- Speaker Plan -->
   <section class="section">
     <div class="container">
-      <SectionHeading title="Speaker Plan" subtitle="Names will be announced after confirmations" />
-
-      <div class="talk-list">
-        {speakerTracks.map((item) => (
-          <div class="talk-card glass reveal">
-            <div class="talk-header">
-              <div class="talk-info">
-                <h3 class="talk-speaker">{item.track}</h3>
-                <p class="talk-affiliation muted">Two invited talks proposed</p>
-              </div>
-              <div class="talk-date">
-                <span>TBD</span>
-              </div>
+      <SectionHeading title="Speaker Lineup" subtitle="Planned invited speakers listed in the final PDF" />
+      <div class="speaker-grid reveal-stagger">
+        {speakerCards.map((speaker) => (
+          <article class="speaker-card">
+            <a class="speaker-image" href={speaker.url} target="_blank" rel="noopener noreferrer">
+              <img src={speaker.image} alt={speaker.name} loading="lazy" />
+            </a>
+            <div class="speaker-body">
+              <span class="speaker-pillar">{speaker.pillar}</span>
+              <h3><a href={speaker.url} target="_blank" rel="noopener noreferrer">{speaker.name}</a></h3>
+              <p class="speaker-title">{speaker.title}</p>
+              <p class="speaker-affiliation">{speaker.affiliation}</p>
+              <p class="speaker-bio">{speaker.bio}</p>
             </div>
-            <div class="talk-body">
-              <h4 class="talk-title">Scope</h4>
-              <p class="talk-abstract muted">{item.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <SectionHeading title="Program Flow" subtitle={`${workshop.format} workshop with moderated Q&A and live demos`} />
+      <div class="schedule-list reveal">
+        {schedule.map((item) => (
+          <div class="schedule-item">
+            <time>{item.time}</time>
+            <div>
+              <h3>{item.title}</h3>
+              {item.detail && <p>{item.detail}</p>}
             </div>
           </div>
         ))}
@@ -69,7 +80,6 @@ const speakerTracks = [
 </Layout>
 
 <style>
-  /* Mini hero */
   .hero-small {
     position: relative;
     padding: 10rem 0 5rem;
@@ -80,19 +90,21 @@ const speakerTracks = [
   .hero-small-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(79, 164, 212, 0.1) 0%, transparent 70%);
+    background:
+      linear-gradient(135deg, rgba(243, 179, 93, 0.11), transparent 42%),
+      linear-gradient(225deg, rgba(105, 214, 200, 0.09), transparent 46%);
     z-index: 0;
   }
 
   .hero-small-content {
     position: relative;
     z-index: 1;
-    max-width: 760px;
+    max-width: 780px;
   }
 
   .eyebrow {
     font-size: 0.82rem;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
@@ -101,7 +113,7 @@ const speakerTracks = [
 
   .hero-small h1 {
     margin-bottom: 1.25rem;
-    background: linear-gradient(135deg, var(--text) 30%, var(--accent-bright) 100%);
+    background: linear-gradient(135deg, var(--text) 25%, var(--accent-bright) 72%, var(--mint) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -110,7 +122,7 @@ const speakerTracks = [
   .lead {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto 2rem;
     line-height: 1.75;
   }
@@ -123,88 +135,136 @@ const speakerTracks = [
     flex-wrap: wrap;
   }
 
-  /* Talk cards */
-  .talk-list {
+  .section-alt {
+    background: rgba(255, 255, 255, 0.018);
+    border-block: 1px solid rgba(255, 255, 255, 0.035);
+  }
+
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .speaker-card {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 1.2rem;
+    min-height: 280px;
+    padding: 1rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    transition: transform var(--transition), border-color var(--transition), background var(--transition);
+  }
+  .speaker-card:hover {
+    transform: translateY(-4px);
+    background: var(--glass-hover);
+    border-color: rgba(243, 179, 93, 0.26);
+  }
+
+  .speaker-image {
+    display: block;
+    width: 100%;
+    min-height: 240px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .speaker-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .speaker-body {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+    justify-content: center;
   }
 
-  .talk-card {
-    transition: all var(--transition);
-  }
-  .talk-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  }
-
-  .talk-header {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
+  .speaker-pillar {
+    align-self: flex-start;
+    color: var(--mint);
+    border: 1px solid rgba(105, 214, 200, 0.24);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
   }
 
-  .talk-avatar-wrap {
-    flex-shrink: 0;
-  }
-
-  .talk-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(79, 164, 212, 0.2);
-  }
-
-  .talk-info {
-    flex: 1;
-    min-width: 120px;
-  }
-
-  .talk-speaker {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.15rem;
-  }
-
-  .talk-affiliation {
-    font-size: 0.88rem;
-  }
-
-  .talk-date {
-    flex-shrink: 0;
-    padding: 0.35rem 0.85rem;
-    background: rgba(79, 164, 212, 0.1);
-    border-radius: 20px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--accent);
-  }
-
-  .talk-body {
-    padding-top: 1rem;
-    border-top: 1px solid var(--glass-border);
-  }
-
-  .talk-title {
+  .speaker-body h3 {
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.55rem;
+    margin-bottom: 0.45rem;
+  }
+  .speaker-body h3 a {
     color: var(--text);
   }
-
-  .talk-abstract {
-    font-size: 0.95rem;
-    line-height: 1.7;
+  .speaker-body h3 a:hover {
+    color: var(--accent-bright);
   }
 
-  /* Back link */
+  .speaker-title {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.96rem;
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
+
+  .speaker-affiliation {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .speaker-bio {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .schedule-list {
+    max-width: 860px;
+    margin: 0 auto;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--glass);
+  }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--glass-border);
+    align-items: center;
+  }
+  .schedule-item:last-child {
+    border-bottom: none;
+  }
+  .schedule-item time {
+    color: var(--accent-bright);
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .schedule-item h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+  .schedule-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
   .back-link {
     padding: 2rem 0 1rem;
   }
@@ -215,5 +275,26 @@ const speakerTracks = [
   }
   .back-link a:hover {
     color: var(--accent-bright);
+  }
+
+  @media (max-width: 980px) {
+    .speaker-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .speaker-card {
+      grid-template-columns: 1fr;
+    }
+    .speaker-image,
+    .speaker-image img {
+      min-height: 300px;
+    }
+    .schedule-item {
+      grid-template-columns: 72px 1fr;
+      gap: 0.9rem;
+      padding: 0.95rem 1rem;
+    }
   }
 </style>

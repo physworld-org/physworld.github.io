@@ -5,159 +5,179 @@ import PersonCard from "../components/PersonCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
 import { withBase } from "../lib/paths";
+import { organizers, schedule, speakers, sponsors, topics, workshop } from "../data/workshop";
 
-const organizers = [
-  {
-    name: "Ashia C. Wilson",
-    affiliation: "Lister Brothers Career Development Associate Professor, MIT",
-    image: withBase("assets/profile_organizer/ashia.png"),
-    url: "https://www.ashiawilson.com/",
-  },
-  {
-    name: "Paul Liang",
-    affiliation: "Assistant Professor, MIT Media Lab and MIT EECS",
-    image: withBase("assets/profile_speaker/paul.jpg"),
-    url: "https://pliang279.github.io/",
-  },
-  {
-    name: "Mengyu Wang",
-    affiliation: "Associate Professor of Ophthalmology, Harvard Medical School",
-    image: withBase("assets/profile_organizer/mengyu.jpg"),
-    url: "https://wang.hms.harvard.edu/team/dr-wang/",
-  },
-  {
-    name: "Shangzhe Wu",
-    affiliation: "Assistant Professor, Department of Engineering, University of Cambridge",
-    image: withBase("assets/profile_organizer/shangzhe.jpg"),
-    url: "https://www.elliottwu.com/",
-  },
+const organizerCards = organizers.map((person) => ({
+  ...person,
+  image: person.image ? withBase(person.image) : undefined,
+}));
+
+const speakerCards = speakers.map((person) => ({
+  name: person.name,
+  affiliation: person.affiliation,
+  tag: person.pillar,
+  focus: person.title,
+  image: withBase(person.image),
+  url: person.url,
+}));
+
+const sponsorCards = sponsors.map((sponsor) => ({
+  ...sponsor,
+  image: withBase(sponsor.image),
+}));
+
+const stats = [
+  { value: workshop.format, label: "Workshop format" },
+  { value: workshop.expectedAttendees, label: "Expected attendance" },
+  { value: workshop.posterBoards, label: "Poster capacity" },
+  { value: workshop.locations, label: "Venue preferences" },
 ];
 
-/*
-const additionalOrganizers = [
-  { name: "Kaichen Zhou", affiliation: "TBD", image: withBase("assets/profile_organizer/kaichen.jpg"), url: "https://kaichen-z.github.io/" },
-  { name: "Jianqing Zheng", affiliation: "TBD", image: "", url: "" },
-  { name: "Congyue Deng", affiliation: "TBD", image: "", url: "" },
-  { name: "Rao Fu", affiliation: "TBD", image: withBase("assets/profile_organizer/raofu.png"), url: "https://freddierao.github.io/" },
-  { name: "Ruojin Cai", affiliation: "TBD", image: "", url: "" },
-  { name: "Fangneng Zhan", affiliation: "TBD", image: withBase("assets/profile_organizer/fangneng.png"), url: "https://fnzhan.com/" },
-  { name: "David Dai", affiliation: "TBD", image: "", url: "" },
-  { name: "Tiange Xiang", affiliation: "TBD", image: "", url: "" },
-  { name: "Yining Hong", affiliation: "TBD", image: withBase("assets/profile_organizer/yining.jpg"), url: "" },
-  { name: "Jieneng Chen", affiliation: "TBD", image: "", url: "" },
-  { name: "Xinhai Chang", affiliation: "TBD", image: withBase("assets/profile_coordinator/xinhai.png"), url: "https://chang-xinhai.github.io/" },
-];
-*/
+const keyDates = workshop.dates;
 ---
 
-<Layout title="PhysWorld - Physical World Understanding" description="NeurIPS 2026 workshop proposal on physical world understanding through geometry, characteristics, and multimodal sensing.">
+<Layout title="PhysWorldAI - Physical World AI" description={workshop.tagline}>
   <Nav currentPage="/" />
 
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
   <section class="hero" aria-label="Hero">
     <div class="hero-backdrop" aria-hidden="true">
       <img src={withBase("assets/teaser_gwm.png")} alt="" />
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-radial" aria-hidden="true"></div>
+    <div class="hero-lines" aria-hidden="true"></div>
 
     <div class="hero-content container">
       <p class="eyebrow reveal">NeurIPS 2026 workshop proposal</p>
-      <h1 class="reveal">Physical World Understanding</h1>
-      <p class="lead reveal">
-        Beyond pixels: understanding the physical world through geometry, dynamics, characteristics, and multimodal sensing.
-      </p>
+      <h1 class="reveal">{workshop.title}</h1>
+      <p class="lead reveal">{workshop.tagline}</p>
       <div class="cta-row reveal">
-        <a class="btn primary" href={withBase("cfp")}>Workshop Proposal</a>
-        <a class="btn ghost" href="#organizers">Meet Organizers</a>
+        <a class="btn primary" href={withBase("cfp")}>Proposal Details</a>
         <a class="btn ghost" href={withBase("speakers")}>Invited Speakers</a>
+        <a class="btn ghost" href="#organizers">Organizers</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ OVERVIEW ═══════════════════════ -->
   <section id="overview" class="section">
     <div class="container">
-      <SectionHeading title="Proposal Overview" />
-      <div class="glass reveal overview-content">
-        <p>
-          <strong>PhysWorld</strong> is a proposed 1st Workshop on Physical World Understanding: Geometry,
-          Characteristics, and Multimodal Sensing. The proposal asks how AI systems can perceive, represent,
-          and reason about the physical world beyond visual appearance.
-        </p>
-        <p>
-          The workshop centers on three coupled pillars: physical geometry, physical characteristics, and physical
-          sensors. It is designed to bring together computer vision, robotics, graphics, multimodal learning,
-          haptics, audio, and physics-based simulation communities before their benchmarks and protocols fragment.
-        </p>
-        <p>
-          The proposed full-day format includes invited talks with moderated Q&A, contributed-paper orals,
-          posters with live demos, and a synthesis panel spanning geometry, dynamics, materials, and sensing.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ OPPORTUNITIES ═══════════════════════ -->
-  <section id="opportunities" class="section">
-    <div class="container">
-      <div class="highlight-box reveal">
-        <div class="highlight-badge">Proposal Snapshot</div>
-        <p>
-          NeurIPS 2026 workshop, full-day format, expected attendance of 200-300 researchers,
-          non-archival submissions, livestreaming and recording requested, and a program designed around discussion
-          across geometry, characteristics, and multimodal sensing.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ ANNOUNCEMENT ═══════════════════════ -->
-  <section id="announcement" class="section">
-    <div class="container">
-      <div class="highlight-box highlight-box--accent reveal">
-        <div class="highlight-badge">Topics</div>
-        <ul class="topic-list">
-          <li><strong>Physical Geometry:</strong> 3D/4D reconstruction, articulated and deformable scene understanding, and geometry-aware world models.</li>
-          <li><strong>Physical Characteristics:</strong> material properties, contact-rich interactions, dynamics, deformability, affordances, and differentiable simulation.</li>
-          <li><strong>Physical Sensors:</strong> tactile, force/torque, proprioception, RF, audio, depth, IMU, event-based signals, and sensor fusion.</li>
-          <li><strong>Cross-cutting:</strong> embodied world models, sim-to-real transfer, multimodal simulators, benchmarks, evaluation, and responsible deployment.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ ORGANIZERS ═══════════════════════ -->
-  <section id="organizers" class="section">
-    <div class="container">
-      <SectionHeading title="Team" subtitle="The currently displayed organizers for the PhysWorld proposal" />
-
-      <div class="team-group">
-        <h3 class="group-label reveal">Organizers</h3>
-        <div class="person-grid reveal-stagger">
-          {organizers.map((p) => <PersonCard {...p} />)}
+      <SectionHeading title={workshop.shortName} subtitle={workshop.name} />
+      <div class="overview-layout">
+        <div class="glass reveal overview-content">
+          <p>
+            <strong>{workshop.shortName}</strong> is the proposed first workshop on physical world AI, centered on
+            the question of how AI systems can perceive, represent, and reason about the physical world beyond
+            appearance.
+          </p>
+          <p>
+            The final proposal organizes the program around three coupled pillars: physical geometry, physical
+            characteristics, and physical sensors. It brings together computer vision, robotics, graphics, multimodal
+            learning, haptics, audio, and physics-based simulation communities before benchmarks and protocols
+            fragment across separate venues.
+          </p>
+          <p>
+            The requested format is a half-day workshop with moderated Q&A, contributed-paper spotlights,
+            posters, live demos, and a synthesis panel across geometry, characteristics, sensing, and embodied AI.
+          </p>
+        </div>
+        <div class="snapshot reveal">
+          {stats.map((item) => (
+            <div class="stat-card">
+              <span>{item.value}</span>
+              <p>{item.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ SPONSORS ═══════════════════════ -->
-  <section id="sponsors" class="section">
+  <section id="topics" class="section section-alt">
     <div class="container">
-      <SectionHeading title="Sponsors" />
-      <div class="sponsor-callout glass reveal">
-        <h3>Sponsorship and Awards</h3>
-        <p>
-          CyberBrain is listed in the proposal as a confirmed sponsor. Sponsor support will fund the Best Paper Award, Best Student Paper Award, student travel grants for underrepresented attendees, and on-site logistics.
-        </p>
-      </div>
-      <div class="sponsor-logos reveal">
-        <img src={withBase("assets/sponsor/cyberbrain_new.png")} alt="Cyberbrain" class="sponsor-logo" />
+      <SectionHeading title="Topics" subtitle="Geometry, characteristics, sensors, and cross-cutting physical AI" />
+      <div class="topic-grid reveal-stagger">
+        {topics.map((topic) => (
+          <article class="topic-card">
+            <h3>{topic.title}</h3>
+            <p>{topic.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="program" class="section">
+    <div class="container">
+      <SectionHeading title="Half-Day Program" subtitle="Preliminary schedule from the final proposal" />
+      <div class="schedule-list reveal">
+        {schedule.map((item) => (
+          <div class="schedule-item">
+            <time>{item.time}</time>
+            <div>
+              <h3>{item.title}</h3>
+              {item.detail && <p>{item.detail}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="dates" class="section section-alt">
+    <div class="container">
+      <SectionHeading title="Key Dates" subtitle="Submission timeline in the final proposal" />
+      <div class="date-grid reveal-stagger">
+        {keyDates.map((date) => (
+          <article class="date-card">
+            <span>{date.label}</span>
+            <strong>{date.display}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers" class="section">
+    <div class="container">
+      <SectionHeading title="Invited Speaker Plan" subtitle="Four planned invited speakers from the final proposal" />
+      <div class="speaker-plan-grid reveal-stagger">
+        {speakerCards.map((person) => <PersonCard {...person} class="speaker-card-large" />)}
+      </div>
+      <div class="center-link reveal">
+        <a href={withBase("speakers")}>View speaker details</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="organizers" class="section section-alt">
+    <div class="container">
+      <SectionHeading title="Organizers" subtitle="Eight-organizer team listed in the final proposal" />
+      <div class="person-grid reveal-stagger">
+        {organizerCards.map((person) => <PersonCard {...person} />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsors" class="section">
+    <div class="container">
+      <SectionHeading title="Sponsors" subtitle="Confirmed sponsor commitments in the final proposal" />
+      <div class="sponsor-intro glass reveal">
+        <h3>Sponsorship and Awards</h3>
+        <p>
+          Sponsor support is allocated to the Overall Best Paper Award, Best Student Paper Award, student travel
+          grants for underrepresented attendees, and on-site logistics.
+        </p>
+      </div>
+      <div class="sponsor-logos reveal-stagger">
+        {sponsorCards.map((sponsor) => (
+          <a class="sponsor-logo-card" href={sponsor.url} target="_blank" rel="noopener noreferrer" aria-label={sponsor.name}>
+            <img src={sponsor.image} alt={sponsor.name} />
+            <span>{sponsor.commitment}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="section">
     <div class="container">
       <SectionHeading title="Contact" />
@@ -174,7 +194,6 @@ const additionalOrganizers = [
 </Layout>
 
 <style>
-  /* ═══════════════════════ HERO ═══════════════════════ */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -194,45 +213,39 @@ const additionalOrganizers = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.18;
-    filter: saturate(0.5) brightness(0.5);
+    opacity: 0.2;
+    filter: saturate(0.7) contrast(1.05) brightness(0.65);
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(7, 11, 20, 0.6) 0%,
-      rgba(10, 14, 26, 0.85) 50%,
-      var(--bg-base) 100%
-    );
+    background:
+      linear-gradient(180deg, rgba(8, 9, 13, 0.58) 0%, rgba(12, 13, 17, 0.78) 55%, var(--bg-base) 100%),
+      linear-gradient(115deg, rgba(243, 179, 93, 0.12), transparent 38%, rgba(105, 214, 200, 0.08));
   }
 
-  .hero-radial {
+  .hero-lines {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: radial-gradient(
-      ellipse 70% 50% at 50% 40%,
-      rgba(79, 164, 212, 0.08) 0%,
-      transparent 70%
-    );
+    opacity: 0.22;
+    background-image: linear-gradient(115deg, transparent 0 18%, rgba(255, 255, 255, 0.16) 18.2%, transparent 18.6% 100%);
+    background-size: 360px 100%;
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    max-width: 800px;
+    max-width: 880px;
     padding: 4rem 2rem;
   }
 
   .eyebrow {
-    font-family: var(--font-body);
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
@@ -241,7 +254,7 @@ const additionalOrganizers = [
 
   .hero h1 {
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--text) 30%, var(--accent-bright) 100%);
+    background: linear-gradient(135deg, var(--text) 20%, var(--accent-bright) 60%, var(--mint) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -250,7 +263,7 @@ const additionalOrganizers = [
   .lead {
     font-size: 1.2rem;
     color: var(--text-secondary);
-    max-width: 620px;
+    max-width: 660px;
     margin: 0 auto 2.5rem;
     line-height: 1.75;
   }
@@ -263,7 +276,18 @@ const additionalOrganizers = [
     flex-wrap: wrap;
   }
 
-  /* ═══════════════════════ OVERVIEW ═══════════════════════ */
+  .section-alt {
+    background: rgba(255, 255, 255, 0.018);
+    border-block: 1px solid rgba(255, 255, 255, 0.035);
+  }
+
+  .overview-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
   .overview-content p {
     margin-bottom: 1.25rem;
   }
@@ -271,81 +295,114 @@ const additionalOrganizers = [
     margin-bottom: 0;
   }
 
-  /* ═══════════════════════ HIGHLIGHT BOXES ═══════════════════════ */
-  .highlight-box {
-    background: linear-gradient(135deg, rgba(79, 164, 212, 0.06) 0%, rgba(100, 224, 200, 0.04) 100%);
-    border: 1px solid rgba(79, 164, 212, 0.15);
+  .snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card,
+  .topic-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
-    padding: 2.5rem;
-    text-align: center;
-    max-width: 780px;
-    margin: 0 auto;
-    transition: all var(--transition);
-  }
-  .highlight-box:hover {
-    border-color: rgba(79, 164, 212, 0.3);
-    box-shadow: 0 0 40px rgba(79, 164, 212, 0.08);
+    padding: 1.25rem;
   }
 
-  .highlight-box--accent {
-    background: linear-gradient(135deg, rgba(100, 224, 200, 0.06) 0%, rgba(79, 164, 212, 0.04) 100%);
-    border-color: rgba(100, 224, 200, 0.15);
-  }
-  .highlight-box--accent:hover {
-    border-color: rgba(100, 224, 200, 0.3);
-    box-shadow: 0 0 40px rgba(100, 224, 200, 0.08);
-  }
-
-  .highlight-badge {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--accent-bright);
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-  }
-
-  .highlight-box--accent .highlight-badge {
-    color: var(--mint);
-  }
-
-  .highlight-box p {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  /* ═══════════════════════ TEAM / PEOPLE ═══════════════════════ */
-  .team-group {
-    margin-bottom: 3.5rem;
-  }
-  .team-group:last-child {
-    margin-bottom: 0;
-  }
-
-  .group-label {
-    text-align: center;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    position: relative;
-  }
-
-  .group-label::after {
-    content: "";
+  .stat-card span {
     display: block;
-    width: 36px;
-    height: 2px;
-    background: var(--accent);
-    margin: 0.6rem auto 0;
-    border-radius: 1px;
-    opacity: 0.5;
+    color: var(--accent-bright);
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+  .stat-card p {
+    margin-top: 0.35rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .topic-card h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--accent-bright);
+    margin-bottom: 0.65rem;
+  }
+
+  .topic-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .schedule-list {
+    max-width: 860px;
+    margin: 0 auto;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--glass);
+  }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--glass-border);
+    align-items: center;
+  }
+  .schedule-item:last-child {
+    border-bottom: none;
+  }
+  .schedule-item time {
+    color: var(--accent-bright);
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .schedule-item h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+  .schedule-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .date-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  .date-card {
+    min-height: 138px;
+    padding: 1.4rem;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+  }
+  .date-card span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .date-card strong {
+    color: var(--accent-bright);
+    font-size: 1.25rem;
+    line-height: 1.35;
   }
 
   .person-grid {
@@ -353,56 +410,67 @@ const additionalOrganizers = [
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
-    gap: 1.5rem;
+    gap: 1.2rem;
     width: 100%;
   }
 
-  /* ═══════════════════════ SPONSORS ═══════════════════════ */
-  .sponsor-callout {
+  .center-link {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .center-link a {
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+
+  .sponsor-intro {
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
   }
-  .sponsor-callout h3 {
-    font-family: var(--font-display);
+  .sponsor-intro h3 {
     color: var(--accent-bright);
     margin-bottom: 1rem;
-  }
-  .sponsor-callout p {
-    line-height: 1.75;
   }
 
   .sponsor-logos {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    gap: 3rem;
-    margin-top: 2.5rem;
+    gap: 1rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
   }
 
-  .sponsor-logo {
-    height: 120px;
-    width: auto;
-    opacity: 0.9;
-    filter: brightness(1.2) grayscale(0.15);
-    transition: all var(--transition);
-    padding: 1.25rem 2.5rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .sponsor-logo-card {
+    width: min(320px, 100%);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.25rem 2rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius);
+    transition: transform var(--transition), box-shadow var(--transition);
   }
-  .sponsor-logo:hover {
-    opacity: 1;
-    filter: brightness(1.4) grayscale(0);
-    transform: scale(1.05) translateY(-4px);
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(79, 164, 212, 0.2);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25),
-                0 0 20px var(--accent-glow);
+  .sponsor-logo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  }
+  .sponsor-logo-card img {
+    max-width: 230px;
+    max-height: 82px;
+    object-fit: contain;
+  }
+  .sponsor-logo-card span {
+    color: #2d2a24;
+    font-weight: 800;
+    font-size: 0.9rem;
   }
 
-  /* ═══════════════════════ CONTACT ═══════════════════════ */
   .contact-box {
     text-align: center;
     max-width: 500px;
@@ -415,39 +483,53 @@ const additionalOrganizers = [
   }
 
   .contact-email a {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--accent-bright);
   }
 
-  /* ═══════════════════════ RESPONSIVE ═══════════════════════ */
-  @media (max-width: 768px) {
+  @media (max-width: 980px) {
+    .overview-layout,
+    .topic-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .date-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 680px) {
     .hero-content {
       padding: 3rem 1.25rem;
     }
     .lead {
       font-size: 1.05rem;
     }
-    .highlight-box {
-      padding: 1.75rem;
+    .overview-layout,
+    .snapshot,
+    .topic-grid {
+      grid-template-columns: 1fr;
     }
-    .person-grid {
-      justify-content: center;
+    .schedule-item {
+      grid-template-columns: 72px 1fr;
+      gap: 0.9rem;
+      padding: 0.95rem 1rem;
     }
+  }
+</style>
+
+<style is:global>
+  .speaker-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-
-  .topic-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .topic-list li {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-  .topic-list li:last-child {
-    border-bottom: none;
+  @media (max-width: 760px) {
+    .speaker-plan-grid {
+      grid-template-columns: 1fr;
+      max-width: 340px;
+    }
   }
 </style>

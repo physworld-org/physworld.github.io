@@ -6,8 +6,8 @@ interface Props {
 import { withBase } from "../lib/paths";
 
 const {
-  title = "PhysWorld - Workshop Proposal",
-  description = "PhysWorld: Physical World Understanding through geometry, characteristics, and multimodal sensing.",
+  title = "PhysWorldAI - Workshop Proposal",
+  description = "PhysWorldAI: Physical World AI through geometry, characteristics, and multimodal sensing.",
 } = Astro.props;
 ---
 
@@ -28,8 +28,7 @@ const {
   </head>
   <body>
     <div class="bg-grain" aria-hidden="true"></div>
-    <div class="bg-glow bg-glow--top" aria-hidden="true"></div>
-    <div class="bg-glow bg-glow--bottom" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
     <slot />
   </body>
 </html>
@@ -46,25 +45,26 @@ const {
 
   /* ──────────────────────────── DESIGN TOKENS ───────────────────────────── */
   :root {
-    /* Palette — deep observatory blues */
-    --bg-deep: #070b14;
-    --bg-base: #0a0e1a;
-    --bg-raised: #0f1629;
-    --bg-surface: #141c32;
+    /* Palette */
+    --bg-deep: #08090d;
+    --bg-base: #101218;
+    --bg-raised: #171a22;
+    --bg-surface: #20232c;
 
     --glass: rgba(255, 255, 255, 0.035);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-hover: rgba(255, 255, 255, 0.07);
 
-    --accent: #4fa4d4;
-    --accent-bright: #6ec0ec;
-    --accent-glow: rgba(79, 164, 212, 0.35);
-    --mint: #64e0c8;
-    --mint-glow: rgba(100, 224, 200, 0.2);
+    --accent: #f3b35d;
+    --accent-bright: #ffd08a;
+    --accent-glow: rgba(243, 179, 93, 0.22);
+    --mint: #69d6c8;
+    --violet: #9aa7ff;
+    --coral: #ff8f7a;
 
-    --text: #e8ecf4;
-    --text-secondary: rgba(232, 236, 244, 0.72);
-    --text-muted: rgba(232, 236, 244, 0.45);
+    --text: #f1efe7;
+    --text-secondary: rgba(241, 239, 231, 0.74);
+    --text-muted: rgba(241, 239, 231, 0.48);
 
     /* Typography */
     --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -72,8 +72,8 @@ const {
 
     /* Sizes */
     --container: 1140px;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --radius: 8px;
+    --radius-sm: 6px;
     --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
@@ -83,9 +83,15 @@ const {
     -webkit-font-smoothing: antialiased;
   }
 
+  [id] {
+    scroll-margin-top: 110px;
+  }
+
   body {
     font-family: var(--font-body);
-    background: linear-gradient(175deg, var(--bg-deep) 0%, var(--bg-base) 40%, var(--bg-raised) 100%);
+    background:
+      linear-gradient(180deg, rgba(255, 143, 122, 0.05) 0%, transparent 28%),
+      linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-base) 48%, #151317 100%);
     color: var(--text);
     line-height: 1.7;
     min-height: 100vh;
@@ -105,33 +111,18 @@ const {
     background-size: 200px;
   }
 
-  .bg-glow {
+  .bg-grid {
     position: fixed;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
-    border-radius: 50%;
-    filter: blur(120px);
-  }
-  .bg-glow--top {
-    width: 600px;
-    height: 600px;
-    top: -200px;
-    right: -100px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    animation: pulse-glow 8s ease-in-out infinite alternate;
-  }
-  .bg-glow--bottom {
-    width: 500px;
-    height: 500px;
-    bottom: -150px;
-    left: -80px;
-    background: radial-gradient(circle, var(--mint-glow) 0%, transparent 70%);
-    animation: pulse-glow 10s ease-in-out 2s infinite alternate;
-  }
-
-  @keyframes pulse-glow {
-    0% { opacity: 0.4; transform: scale(1); }
-    100% { opacity: 0.7; transform: scale(1.15); }
+    opacity: 0.26;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(120deg, rgba(243, 179, 93, 0.08), transparent 42%, rgba(105, 214, 200, 0.06));
+    background-size: 56px 56px, 56px 56px, 100% 100%;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 78%);
   }
 
   /* ─────────────────────────── TYPOGRAPHY ────────────────────────────────── */
@@ -215,8 +206,8 @@ const {
   .reveal {
     opacity: 0;
     transform: translateY(36px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.visible {
     opacity: 1;
@@ -227,15 +218,17 @@ const {
   .reveal-stagger > * {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
-  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
-  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
-  .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
-  .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.05s; }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.10s; }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.15s; }
+  .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.20s; }
+  .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.25s; }
+  .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.30s; }
+  .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.35s; }
   .reveal-stagger.visible > * {
     opacity: 0;
     transform: translateY(28px);

@@ -1,6 +1,6 @@
-# PhysWorld Workshop Website
+# PhysWorldAI Workshop Website
 
-Website for the PhysWorld workshop proposal: **Physical World Understanding: Geometry, Characteristics, and Multimodal Sensing**.
+Website for the PhysWorldAI workshop proposal: **Physical World AI: Geometry, Characteristics, and Multimodal Sensing**.
 
 Live site: https://physworld-org.github.io/physworld.github.io/
 

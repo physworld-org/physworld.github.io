@@ -9,7 +9,7 @@ const links = [
   { href: withBase("#overview"), current: "/#overview", label: "Overview" },
   { href: withBase("cfp"), current: "/cfp", label: "Proposal" },
   { href: withBase("#organizers"), current: "/#organizers", label: "Organizers" },
-  { href: withBase("speakers"), current: "/speakers", label: "Invited Speakers" },
+  { href: withBase("speakers"), current: "/speakers", label: "Speakers" },
   { href: withBase("news"), current: "/news", label: "Updates" },
   { href: withBase("#sponsors"), current: "/#sponsors", label: "Sponsors" },
 ];
@@ -24,7 +24,7 @@ const links = [
           <span class="brand-mark-ring"></span>
           <span class="brand-mark-halo"></span>
         </span>
-        <span class="brand-text">PhysWorld</span>
+        <span class="brand-text">PhysWorldAI</span>
       </a>
 
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -105,7 +105,7 @@ const links = [
     background: rgba(10, 14, 26, 0.5);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(79, 164, 212, 0.4);
+    border: 1px solid rgba(243, 179, 93, 0.45);
     color: var(--accent-bright);
     font-weight: 600;
     font-size: 0.88rem;
@@ -142,8 +142,8 @@ const links = [
     position: absolute;
     inset: 4px;
     border-radius: 50%;
-    background: radial-gradient(circle at 38% 35%, #a7dcf5 0%, var(--accent) 40%, #1a4462 100%);
-    box-shadow: 0 0 12px rgba(79, 164, 212, 0.6);
+    background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 44%, #4b3120 100%);
+    box-shadow: 0 0 12px rgba(243, 179, 93, 0.45);
     z-index: 2;
   }
 
@@ -151,7 +151,7 @@ const links = [
     position: absolute;
     inset: 1px;
     border-radius: 50%;
-    border: 1.5px solid rgba(110, 192, 236, 0.35);
+    border: 1.5px solid rgba(105, 214, 200, 0.35);
     z-index: 3;
     animation: ring-breathe 4s ease-in-out infinite;
   }
@@ -160,7 +160,7 @@ const links = [
     position: absolute;
     inset: -6px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(79, 164, 212, 0.25) 0%, transparent 70%);
+    background: rgba(105, 214, 200, 0.18);
     z-index: 1;
     animation: halo-pulse 5s ease-in-out infinite alternate;
   }
