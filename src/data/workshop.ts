@@ -50,7 +50,7 @@ export const organizers = [
   {
     name: "Kaichen Zhou",
     affiliation: "Massachusetts Institute of Technology / Harvard University",
-    tag: "Lead organizer",
+    tag: "Organizer (Contact person)",
     focus: "Physical world AI, multimodal sensing, and embodied intelligence.",
     image: "assets/profile_organizer/kaichen-zhou.jpg",
     url: "https://kaichen-z.github.io/",
@@ -145,11 +145,11 @@ export const organizers = [
   },
   {
     name: "Zihan Wang",
-    affiliation: "University of California, Berkeley",
+    affiliation: "Abaka AI / 2077AI",
     tag: "Organizer",
-    focus: "Visuotactile sensing and data systems for embodied AI.",
+    focus: "AI data infrastructure, benchmarks, and model evaluation.",
     image: "assets/profile_organizer/zihan-wang.jpg",
-    url: "https://zh-wang.top/",
+    url: "https://www.linkedin.com/in/zihanwanghms/",
   },
   {
     name: "Xinhai Chang",
