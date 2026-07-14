@@ -235,13 +235,13 @@ export const schedule = [
 export const sponsors = [
   {
     name: "2077AI",
-    commitment: "$3,000",
+    commitment: "Workshop Sponsor",
     image: "assets/sponsor/2077ai.png",
     url: "https://www.2077ai.com/",
   },
   {
     name: "CyberBrain",
-    commitment: "$1,000",
+    commitment: "Workshop Sponsor",
     image: "assets/sponsor/cyberbrain_new.png",
     url: "https://www.cyberbrain.ai/",
   },
