@@ -6,7 +6,7 @@ interface Props {
 import { withBase } from "../lib/paths";
 
 const {
-  title = "PhysWorldAI - Workshop Proposal",
+  title = "PhysWorldAI - NeurIPS 2026 Workshop",
   description = "PhysWorldAI: Physical World AI through geometry, characteristics, and multimodal sensing.",
 } = Astro.props;
 ---
@@ -84,7 +84,13 @@ const {
   }
 
   [id] {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 72px;
+  }
+
+  @media (max-width: 900px) {
+    [id] {
+      scroll-margin-top: 48px;
+    }
   }
 
   body {

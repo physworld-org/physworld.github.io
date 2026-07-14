@@ -7,14 +7,14 @@ import { withBase } from "../lib/paths";
 import { topics, workshop } from "../data/workshop";
 ---
 
-<Layout title="Workshop Proposal | PhysWorldAI" description={workshop.tagline}>
+<Layout title="Call for Papers | PhysWorldAI" description={workshop.tagline}>
   <Nav currentPage="/cfp" />
 
   <section class="hero-small">
     <div class="hero-small-bg" aria-hidden="true"></div>
     <div class="hero-small-content container">
-      <p class="eyebrow reveal">NeurIPS 2026 workshop proposal</p>
-      <h1 class="reveal">Workshop Proposal</h1>
+      <p class="eyebrow reveal">NeurIPS 2026 Workshop | Atlanta, Georgia</p>
+      <h1 class="reveal">Call for Papers</h1>
       <p class="lead reveal">{workshop.name}</p>
       <div class="cta-row reveal">
         <a class="btn ghost" href={withBase("#organizers")}>Organizers</a>
@@ -25,7 +25,7 @@ import { topics, workshop } from "../data/workshop";
 
   <section class="section">
     <div class="container">
-      <SectionHeading title="Proposal Summary" subtitle="Final proposal details reflected from the PDF" />
+      <SectionHeading title="Workshop Summary" subtitle={`${workshop.location}, ${workshop.eventDates}`} />
       <div class="glass reveal cfp-body">
         <p><strong>Acronym:</strong> {workshop.acronym}</p>
         <p><strong>Name:</strong> {workshop.name}</p>
@@ -36,11 +36,11 @@ import { topics, workshop } from "../data/workshop";
         </p>
         <div class="facts-grid">
           <div><strong>Edition</strong><span>{workshop.edition}</span></div>
+          <div><strong>Conference</strong><span>NeurIPS 2026</span></div>
           <div><strong>Format</strong><span>{workshop.format}</span></div>
-          <div><strong>Expected attendance</strong><span>{workshop.expectedAttendees}</span></div>
-          <div><strong>Venue preferences</strong><span>{workshop.locations}</span></div>
-          <div><strong>Special requests</strong><span>{workshop.specialRequests}</span></div>
-          <div><strong>Poster boards</strong><span>{workshop.posterBoards}</span></div>
+          <div><strong>Location</strong><span>{workshop.location}</span></div>
+          <div><strong>Conference dates</strong><span>{workshop.displayDates}</span></div>
+          <div><strong>Submission deadline</strong><span>{workshop.dates[0].display}</span></div>
         </div>
       </div>
     </div>
@@ -85,12 +85,12 @@ import { topics, workshop } from "../data/workshop";
 
   <section class="section section-alt">
     <div class="container">
-      <SectionHeading title="Awards and Support" subtitle="Sponsor commitments listed in the proposal" />
+      <SectionHeading title="Awards and Support" subtitle="Sponsor support for the workshop" />
       <div class="glass reveal cfp-body">
         <p>
-          CyberBrain and 2077AI are listed as confirmed sponsors. The proposal names an Overall Best Paper Award
-          and a Best Student Paper Award, with support also planned for student travel grants for underrepresented
-          attendees and on-site logistics.
+          CyberBrain and 2077AI support the workshop. PhysWorldAI includes an Overall Best Paper Award and a
+          Best Student Paper Award, with support also planned for student travel grants for underrepresented attendees
+          and on-site logistics.
         </p>
       </div>
     </div>

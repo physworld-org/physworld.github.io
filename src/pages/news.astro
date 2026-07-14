@@ -8,18 +8,18 @@ import { withBase } from "../lib/paths";
 const newsItems = [
   {
     date: "2026-06-21",
-    title: "Final proposal details reflected on the website",
+    title: "PhysWorldAI workshop website launched",
     author: "PhysWorldAI Organizers",
     summary:
-      "The site now reflects the final PDF: PhysWorldAI, half-day format, 8 organizers, 4 planned invited speakers, and 2077AI plus CyberBrain sponsorship.",
-    tag: "Proposal",
+      "The workshop website now includes the program, call for papers, invited speakers, organizing team, and sponsor information for NeurIPS 2026 in Atlanta, Georgia.",
+    tag: "Website",
   },
   {
     date: "August 29, 2026",
     title: "Submission deadline",
     author: "Program Committee",
     summary:
-      "The proposal plans long papers up to 8 pages and extended abstracts up to 4 pages, reviewed double-blind through OpenReview.",
+      "The call welcomes long papers up to 8 pages and extended abstracts up to 4 pages, reviewed double-blind through OpenReview.",
     tag: "CFP",
   },
   {
@@ -35,31 +35,31 @@ const newsItems = [
     title: "Camera-ready deadline",
     author: "Workshop Team",
     summary:
-      "Accepted non-archival papers are posted on the workshop website, while authors remain free to revise and submit elsewhere.",
+      "Camera-ready non-archival papers will be posted on the workshop website, while authors remain free to revise and submit elsewhere.",
     tag: "Program",
   },
 ];
 ---
 
-<Layout title="Updates | PhysWorldAI" description="Updates for the PhysWorldAI workshop proposal.">
+<Layout title="Updates | PhysWorldAI" description="Updates from the PhysWorldAI workshop at NeurIPS 2026.">
   <Nav currentPage="/news" />
 
   <section class="hero-small">
     <div class="hero-small-bg" aria-hidden="true"></div>
     <div class="hero-small-content container">
-      <p class="eyebrow reveal">Workshop proposal updates</p>
+      <p class="eyebrow reveal">PhysWorldAI | NeurIPS 2026</p>
       <h1 class="reveal">Updates</h1>
-      <p class="lead reveal">Proposal status, call-for-papers dates, program notes, and workshop announcements.</p>
+      <p class="lead reveal">Call-for-papers dates, program notes, and workshop announcements.</p>
       <div class="cta-row reveal">
         <a class="btn ghost" href={withBase()}>Home</a>
-        <a class="btn ghost" href={withBase("cfp")}>Proposal</a>
+        <a class="btn ghost" href={withBase("cfp")}>Call for Papers</a>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <SectionHeading title="Recent Updates" subtitle="Dates and status from the final proposal" />
+      <SectionHeading title="Recent Updates" subtitle="Workshop dates and announcements" />
 
       <div class="news-grid">
         {newsItems.map((item) => (

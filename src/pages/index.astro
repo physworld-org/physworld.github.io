@@ -12,6 +12,9 @@ const organizerCards = organizers.map((person) => ({
   image: person.image ? withBase(person.image) : undefined,
 }));
 
+const primaryOrganizerCards = organizerCards.filter((person) => person.tag !== "Junior Organizer");
+const juniorOrganizerCards = organizerCards.filter((person) => person.tag === "Junior Organizer");
+
 const speakerCards = speakers.map((person) => ({
   name: person.name,
   affiliation: person.affiliation,
@@ -27,10 +30,10 @@ const sponsorCards = sponsors.map((sponsor) => ({
 }));
 
 const stats = [
+  { value: workshop.edition, label: "Workshop edition" },
   { value: workshop.format, label: "Workshop format" },
-  { value: workshop.expectedAttendees, label: "Expected attendance" },
-  { value: workshop.posterBoards, label: "Poster capacity" },
-  { value: workshop.locations, label: "Venue preferences" },
+  { value: workshop.location, label: "Location" },
+  { value: workshop.displayDates, label: "NeurIPS 2026 dates" },
 ];
 
 const keyDates = workshop.dates;
@@ -47,11 +50,11 @@ const keyDates = workshop.dates;
     <div class="hero-lines" aria-hidden="true"></div>
 
     <div class="hero-content container">
-      <p class="eyebrow reveal">NeurIPS 2026 workshop proposal</p>
+      <p class="eyebrow reveal">NeurIPS 2026 Workshop | Atlanta, Georgia | December 8-13, 2026</p>
       <h1 class="reveal">{workshop.title}</h1>
       <p class="lead reveal">{workshop.tagline}</p>
       <div class="cta-row reveal">
-        <a class="btn primary" href={withBase("cfp")}>Proposal Details</a>
+        <a class="btn primary" href={withBase("cfp")}>Call for Papers</a>
         <a class="btn ghost" href={withBase("speakers")}>Invited Speakers</a>
         <a class="btn ghost" href="#organizers">Organizers</a>
       </div>
@@ -64,19 +67,19 @@ const keyDates = workshop.dates;
       <div class="overview-layout">
         <div class="glass reveal overview-content">
           <p>
-            <strong>{workshop.shortName}</strong> is the proposed first workshop on physical world AI, centered on
+            <strong>{workshop.shortName}</strong> is the first workshop on physical world AI, centered on
             the question of how AI systems can perceive, represent, and reason about the physical world beyond
             appearance.
           </p>
           <p>
-            The final proposal organizes the program around three coupled pillars: physical geometry, physical
+            The workshop program is organized around three coupled pillars: physical geometry, physical
             characteristics, and physical sensors. It brings together computer vision, robotics, graphics, multimodal
             learning, haptics, audio, and physics-based simulation communities before benchmarks and protocols
             fragment across separate venues.
           </p>
           <p>
-            The requested format is a half-day workshop with moderated Q&A, contributed-paper spotlights,
-            posters, live demos, and a synthesis panel across geometry, characteristics, sensing, and embodied AI.
+            The half-day program includes moderated Q&A, contributed-paper spotlights, posters, live demos,
+            and a synthesis panel across geometry, characteristics, sensing, and embodied AI in Atlanta, Georgia.
           </p>
         </div>
         <div class="snapshot reveal">
@@ -107,7 +110,7 @@ const keyDates = workshop.dates;
 
   <section id="program" class="section">
     <div class="container">
-      <SectionHeading title="Half-Day Program" subtitle="Preliminary schedule from the final proposal" />
+      <SectionHeading title="Half-Day Program" subtitle="Workshop program" />
       <div class="schedule-list reveal">
         {schedule.map((item) => (
           <div class="schedule-item">
@@ -124,7 +127,7 @@ const keyDates = workshop.dates;
 
   <section id="dates" class="section section-alt">
     <div class="container">
-      <SectionHeading title="Key Dates" subtitle="Submission timeline in the final proposal" />
+      <SectionHeading title="Key Dates" subtitle={`${workshop.location}, ${workshop.eventDates}`} />
       <div class="date-grid reveal-stagger">
         {keyDates.map((date) => (
           <article class="date-card">
@@ -138,7 +141,7 @@ const keyDates = workshop.dates;
 
   <section id="speakers" class="section">
     <div class="container">
-      <SectionHeading title="Invited Speaker Plan" subtitle="Four planned invited speakers from the final proposal" />
+      <SectionHeading title="Invited Speakers" subtitle="Four invited speakers spanning physical simulation, geometry, embodied intelligence, and multimodal perception" />
       <div class="speaker-plan-grid reveal-stagger">
         {speakerCards.map((person) => <PersonCard {...person} class="speaker-card-large" />)}
       </div>
@@ -150,16 +153,21 @@ const keyDates = workshop.dates;
 
   <section id="organizers" class="section section-alt">
     <div class="container">
-      <SectionHeading title="Organizers" subtitle="Eight-organizer team listed in the final proposal" />
-      <div class="person-grid reveal-stagger">
-        {organizerCards.map((person) => <PersonCard {...person} />)}
+      <SectionHeading title="Organizers" subtitle="Organizing team for PhysWorldAI" />
+      <div class="organizer-grid organizer-primary-grid reveal-stagger">
+        {primaryOrganizerCards.map((person) => <PersonCard {...person} class="organizer-card-compact" />)}
+      </div>
+
+      <h3 class="organizer-group-title reveal">Junior Organizers</h3>
+      <div class="organizer-grid junior-organizer-grid reveal-stagger">
+        {juniorOrganizerCards.map((person) => <PersonCard {...person} class="organizer-card-compact" />)}
       </div>
     </div>
   </section>
 
   <section id="sponsors" class="section">
     <div class="container">
-      <SectionHeading title="Sponsors" subtitle="Confirmed sponsor commitments in the final proposal" />
+      <SectionHeading title="Sponsors" subtitle="Sponsor support for PhysWorldAI" />
       <div class="sponsor-intro glass reveal">
         <h3>Sponsorship and Awards</h3>
         <p>
@@ -185,7 +193,7 @@ const keyDates = workshop.dates;
         <p class="contact-email">
           <a href="mailto:general_world@outlook.com">general_world@outlook.com</a>
         </p>
-        <p class="muted">Questions, sponsorship, program committee interest, or proposal coordination.</p>
+        <p class="muted">Questions, sponsorship, program committee interest, or workshop coordination.</p>
       </div>
     </div>
   </section>
@@ -414,6 +422,31 @@ const keyDates = workshop.dates;
     width: 100%;
   }
 
+  .organizer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .junior-organizer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 820px;
+  }
+
+  .organizer-group-title {
+    margin: 3.25rem 0 1.4rem;
+    text-align: center;
+    color: var(--accent-bright);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+  }
+
+  :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
+    grid-column: 2;
+  }
+
   .center-link {
     text-align: center;
     margin-top: 2rem;
@@ -495,6 +528,9 @@ const keyDates = workshop.dates;
     .date-grid {
       grid-template-columns: 1fr;
     }
+    .organizer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 680px) {
@@ -513,6 +549,22 @@ const keyDates = workshop.dates;
       grid-template-columns: 72px 1fr;
       gap: 0.9rem;
       padding: 0.95rem 1rem;
+    }
+    .organizer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .junior-organizer-grid {
+      max-width: 100%;
+    }
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
+      grid-column: auto;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .organizer-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

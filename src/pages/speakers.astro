@@ -12,28 +12,28 @@ const speakerCards = speakers.map((speaker) => ({
 }));
 ---
 
-<Layout title="Invited Speakers | PhysWorldAI" description="Invited speaker plan for the PhysWorldAI workshop proposal.">
+<Layout title="Invited Speakers | PhysWorldAI" description="Invited speakers for PhysWorldAI at NeurIPS 2026.">
   <Nav currentPage="/speakers" />
 
   <section class="hero-small">
     <div class="hero-small-bg" aria-hidden="true"></div>
     <div class="hero-small-content container">
-      <p class="eyebrow reveal">Final proposal speaker plan</p>
+      <p class="eyebrow reveal">PhysWorldAI | NeurIPS 2026</p>
       <h1 class="reveal">Invited Speakers</h1>
       <p class="lead reveal">
-        The proposal plans four invited speakers spanning physical simulation, 3D/4D geometry, embodied intelligence,
-        robot learning, and multimodal perception.
+        Four invited speakers spanning physical simulation, 3D/4D geometry, embodied intelligence, robot learning,
+        and multimodal perception.
       </p>
       <div class="cta-row reveal">
         <a class="btn ghost" href={withBase()}>Home</a>
-        <a class="btn ghost" href={withBase("cfp")}>Proposal</a>
+        <a class="btn ghost" href={withBase("cfp")}>Call for Papers</a>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <SectionHeading title="Speaker Lineup" subtitle="Planned invited speakers listed in the final PDF" />
+      <SectionHeading title="Speaker Lineup" subtitle="Invited speakers at PhysWorldAI" />
       <div class="speaker-grid reveal-stagger">
         {speakerCards.map((speaker) => (
           <article class="speaker-card">
