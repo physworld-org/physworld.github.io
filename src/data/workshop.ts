@@ -104,14 +104,6 @@ export const organizers = [
     url: "https://www.elliottwu.com/",
   },
   {
-    name: "Mengyu Wang",
-    affiliation: "Harvard Medical School",
-    tag: "Organizer",
-    focus: "Generative and multimodal AI for robotics and medicine.",
-    image: "assets/profile_organizer/mengyu-wang.jpg",
-    url: "https://wang.hms.harvard.edu/team/dr-wang/",
-  },
-  {
     name: "Rao Fu",
     affiliation: "Brown University",
     tag: "Organizer",
@@ -150,6 +142,14 @@ export const organizers = [
     focus: "AI data infrastructure, benchmarks, and model evaluation.",
     image: "assets/profile_organizer/zihan-wang.jpg",
     url: "https://www.linkedin.com/in/zihanwanghms/",
+  },
+  {
+    name: "Mengyu Wang",
+    affiliation: "Harvard Medical School",
+    tag: "Organizer",
+    focus: "Generative and multimodal AI for robotics and medicine.",
+    image: "assets/profile_organizer/mengyu-wang.jpg",
+    url: "https://wang.hms.harvard.edu/team/dr-wang/",
   },
   {
     name: "Xinhai Chang",

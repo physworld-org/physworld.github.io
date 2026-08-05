@@ -424,10 +424,10 @@ const keyDates = workshop.dates;
 
   .organizer-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     width: 100%;
-    max-width: 880px;
+    max-width: 1160px;
     margin: 0 auto;
   }
 
@@ -443,7 +443,16 @@ const keyDates = workshop.dates;
     font-size: clamp(1.4rem, 2vw, 1.8rem);
   }
 
-  :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
+  /* A lone card on the final row sits centred instead of hugging the left edge. */
+  :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)) {
+    grid-column: 2 / span 2;
+    justify-self: center;
+    width: 100%;
+    max-width: calc((1160px - 3rem) / 4);
+  }
+
+  /* Two cards left over: shift them inward so the row stays balanced. */
+  :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)) {
     grid-column: 2;
   }
 
@@ -531,6 +540,17 @@ const keyDates = workshop.dates;
     .organizer-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    /* Three columns again, so re-centre by thirds instead of by quarters. */
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)) {
+      grid-column: auto;
+      justify-self: stretch;
+      width: 100%;
+      max-width: none;
+    }
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
+      grid-column: 2;
+    }
   }
 
   @media (max-width: 680px) {
@@ -556,9 +576,13 @@ const keyDates = workshop.dates;
     .junior-organizer-grid {
       max-width: 100%;
     }
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)),
     :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
       grid-column: auto;
+      justify-self: stretch;
       width: 100%;
+      max-width: none;
     }
   }
 
