@@ -424,10 +424,10 @@ const keyDates = workshop.dates;
 
   .organizer-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1rem;
     width: 100%;
-    max-width: 1160px;
+    max-width: 1440px;
     margin: 0 auto;
   }
 
@@ -443,16 +443,15 @@ const keyDates = workshop.dates;
     font-size: clamp(1.4rem, 2vw, 1.8rem);
   }
 
-  /* A lone card on the final row sits centred instead of hugging the left edge. */
-  :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)) {
-    grid-column: 2 / span 2;
-    justify-self: center;
-    width: 100%;
-    max-width: calc((1160px - 3rem) / 4);
+  /* Five columns: nudge a short final row inward so it reads as centred.
+     The selector matches the first card of that row (position 5n + 1) and the
+     rest follow it. 1 leftover -> column 3, 2 or 3 leftovers -> start at 2. */
+  :global(.organizer-primary-grid > .person-card:last-child:nth-child(5n + 1)) {
+    grid-column: 3;
   }
 
-  /* Two cards left over: shift them inward so the row stays balanced. */
-  :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)) {
+  :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(5n + 1)),
+  :global(.organizer-primary-grid > .person-card:nth-last-child(3):nth-child(5n + 1)) {
     grid-column: 2;
   }
 
@@ -529,6 +528,28 @@ const keyDates = workshop.dates;
     color: var(--accent-bright);
   }
 
+  @media (max-width: 1280px) {
+    .organizer-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 1160px;
+    }
+    /* Four columns now, so the five-column placements must not stick. */
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(5n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(5n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(3):nth-child(5n + 1)) {
+      grid-column: auto;
+    }
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)) {
+      grid-column: 2 / span 2;
+      justify-self: center;
+      width: 100%;
+      max-width: calc((1160px - 3rem) / 4);
+    }
+    :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)) {
+      grid-column: 2;
+    }
+  }
+
   @media (max-width: 980px) {
     .overview-layout,
     .topic-grid {
@@ -576,6 +597,9 @@ const keyDates = workshop.dates;
     .junior-organizer-grid {
       max-width: 100%;
     }
+    :global(.organizer-primary-grid > .person-card:last-child:nth-child(5n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(5n + 1)),
+    :global(.organizer-primary-grid > .person-card:nth-last-child(3):nth-child(5n + 1)),
     :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)),
     :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)),
     :global(.organizer-primary-grid > .person-card:last-child:nth-child(3n + 1)) {
