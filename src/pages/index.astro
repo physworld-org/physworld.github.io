@@ -5,9 +5,14 @@ import PersonCard from "../components/PersonCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Footer from "../components/Footer.astro";
 import { withBase } from "../lib/paths";
-import { organizers, schedule, speakers, sponsors, topics, workshop } from "../data/workshop";
+import { awardCommittee, organizers, schedule, speakers, sponsors, topics, workshop } from "../data/workshop";
 
 const organizerCards = organizers.map((person) => ({
+  ...person,
+  image: person.image ? withBase(person.image) : undefined,
+}));
+
+const awardCommitteeCards = awardCommittee.map((person) => ({
   ...person,
   image: person.image ? withBase(person.image) : undefined,
 }));
@@ -56,7 +61,7 @@ const keyDates = workshop.dates;
       <div class="cta-row reveal">
         <a class="btn primary" href={withBase("cfp")}>Call for Papers</a>
         <a class="btn ghost" href={withBase("speakers")}>Invited Speakers</a>
-        <a class="btn ghost" href="#organizers">Organizers</a>
+        <a class="btn ghost" href="#committee">Award Committee</a>
       </div>
     </div>
   </section>
@@ -78,8 +83,8 @@ const keyDates = workshop.dates;
             fragment across separate venues.
           </p>
           <p>
-            The half-day program includes moderated Q&A, contributed-paper spotlights, posters, live demos,
-            and a synthesis panel across geometry, characteristics, sensing, and embodied AI in Atlanta, Georgia.
+            The half-day program includes moderated Q&A, contributed-paper spotlights, posters, and live demos
+            across geometry, characteristics, sensing, and embodied AI in Atlanta, Georgia.
           </p>
         </div>
         <div class="snapshot reveal">
@@ -151,7 +156,16 @@ const keyDates = workshop.dates;
     </div>
   </section>
 
-  <section id="organizers" class="section section-alt">
+  <section id="committee" class="section section-alt">
+    <div class="container">
+      <SectionHeading title="Award Committee" subtitle="Best paper award committee for PhysWorldAI" />
+      <div class="organizer-grid award-committee-grid reveal-stagger">
+        {awardCommitteeCards.map((person) => <PersonCard {...person} class="organizer-card-compact" />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="organizers" class="section">
     <div class="container">
       <SectionHeading title="Organizers" subtitle="Organizing team for PhysWorldAI" />
       <div class="organizer-grid organizer-primary-grid reveal-stagger">
@@ -171,8 +185,9 @@ const keyDates = workshop.dates;
       <div class="sponsor-intro glass reveal">
         <h3>Sponsorship and Awards</h3>
         <p>
-          Sponsor support is allocated to the Overall Best Paper Award, Best Student Paper Award, student travel
-          grants for underrepresented attendees, and on-site logistics.
+          Sponsor support is allocated to 2 NeurIPS A2077 Best Paper Awards and 1 NeurIPS Cyberbrain Best Paper
+          Award (each with multiple runners-up), student travel grants for underrepresented attendees, and
+          on-site logistics.
         </p>
       </div>
       <div class="sponsor-logos reveal-stagger">
@@ -191,7 +206,7 @@ const keyDates = workshop.dates;
       <SectionHeading title="Contact" />
       <div class="glass reveal contact-box">
         <p class="contact-email">
-          <a href="mailto:zhouk777@mit.edu">zhouk777@mit.edu</a>
+          <a href="mailto:physicalworldai@hotmail.com">physicalworldai@hotmail.com</a>
         </p>
         <p class="muted">Questions, sponsorship, program committee interest, or workshop coordination.</p>
       </div>
@@ -424,16 +439,21 @@ const keyDates = workshop.dates;
 
   .organizer-grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1180px;
     margin: 0 auto;
   }
 
   .junior-organizer-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 820px;
+  }
+
+  .award-committee-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 600px;
   }
 
   .organizer-group-title {
@@ -443,15 +463,17 @@ const keyDates = workshop.dates;
     font-size: clamp(1.4rem, 2vw, 1.8rem);
   }
 
-  /* Five columns: nudge a short final row inward so it reads as centred.
-     The selector matches the first card of that row (position 5n + 1) and the
-     rest follow it. 1 leftover -> column 3, 2 or 3 leftovers -> start at 2. */
-  :global(.organizer-primary-grid > .person-card:last-child:nth-child(5n + 1)) {
-    grid-column: 3;
+  /* Four columns: nudge a short final row inward so it reads as centred.
+     The selector matches the first card of that row (position 4n + 1) and the
+     rest follow it. 1 leftover -> straddle columns 2-3, 2 leftovers -> start at 2. */
+  :global(.organizer-primary-grid > .person-card:last-child:nth-child(4n + 1)) {
+    grid-column: 2 / span 2;
+    justify-self: center;
+    width: 100%;
+    max-width: calc((100% - 1rem) / 2);
   }
 
-  :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(5n + 1)),
-  :global(.organizer-primary-grid > .person-card:nth-last-child(3):nth-child(5n + 1)) {
+  :global(.organizer-primary-grid > .person-card:nth-last-child(2):nth-child(4n + 1)) {
     grid-column: 2;
   }
 

@@ -14,12 +14,17 @@ export const workshop = {
   displayDates: "December 8-13, 2026",
   specialRequests: "Streaming and recording",
   submissions: "Long papers up to 8 pages and extended abstracts up to 4 pages, in NeurIPS 2026 style.",
-  review: "Double-blind review via OpenReview with at least 3 reviewers per paper.",
-  archivalStatus: "Non-archival; papers selected for the program will be posted on the workshop website.",
+  review: "Double-blind review via OpenReview.",
+  archivalStatus: "Archival & Non-archival; accepted papers will also be posted on the workshop website.",
+  submissionUrl:
+    "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/PhysWorldAI#tab-recent-activity",
   dates: [
-    { label: "Submission deadline", value: "2026-08-29", display: "August 29, 2026" },
-    { label: "Notification", value: "2026-09-26", display: "September 26, 2026" },
-    { label: "Camera-ready", value: "2026-10-26", display: "October 26, 2026" },
+    { label: "Archival paper", value: "2026-09-09", display: "September 09, 2026" },
+    { label: "Notification", value: "2026-10-09", display: "October 09, 2026" },
+    { label: "Camera-ready", value: "2026-10-19", display: "October 19, 2026" },
+    { label: "Non-archival paper", value: "2026-10-29", display: "October 29, 2026" },
+    { label: "Notification", value: "2026-11-09", display: "November 09, 2026" },
+    { label: "Camera-ready", value: "2026-11-19", display: "November 19, 2026" },
   ],
 };
 
@@ -175,6 +180,41 @@ export const organizers = [
     image: "assets/profile_organizer/zeyang-bai.jpg",
     url: "https://baizey.rvosuke.com/",
   },
+  {
+    name: "Yu Chen",
+    affiliation: "Carnegie Mellon University",
+    tag: "Junior Organizer",
+    focus: "Robot learning, applied optimization, and legged locomotion.",
+    image: "assets/profile_organizer/yu-chen.png",
+    url: "https://neuling-jpg.github.io/yu.github.io/",
+  },
+  {
+    name: "Zhiyan Li",
+    affiliation: "Shanghai Jiao Tong University",
+    tag: "Junior Organizer",
+    focus: "Multimodal robot learning, tactile perception, and lifelong learning.",
+    image: "assets/profile_organizer/zhiyan-li.jpg",
+    url: "https://lzy001yuki.github.io/",
+  },
+];
+
+export const awardCommittee = [
+  {
+    name: "Shangzhe Wu",
+    affiliation: "University of Cambridge",
+    tag: "Award Committee",
+    focus: "3D vision, inverse graphics, and dynamic world modeling.",
+    image: "assets/profile_organizer/shangzhe-wu.jpg",
+    url: "https://www.elliottwu.com/",
+  },
+  {
+    name: "Paul Pu Liang",
+    affiliation: "Massachusetts Institute of Technology",
+    tag: "Award Committee",
+    focus: "Multimodal machine learning and foundation models.",
+    image: "assets/profile_speaker/paul.jpg",
+    url: "https://pliang279.github.io/",
+  },
 ];
 
 export const speakers = [
@@ -229,7 +269,7 @@ export const schedule = [
   { time: "11:00", title: "Invited Talk 4 + Q&A", detail: "Cross-cutting" },
   { time: "11:35", title: "Contributed Paper Spotlights" },
   { time: "11:55", title: "Posters + Live Demos" },
-  { time: "12:40", title: "Synthesis Panel + Closing Remarks" },
+  { time: "12:40", title: "Closing Remarks" },
 ];
 
 export const sponsors = [

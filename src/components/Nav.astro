@@ -7,10 +7,10 @@ const { currentPage = "/" } = Astro.props;
 
 const links = [
   { href: withBase("#overview"), current: "/#overview", label: "Overview" },
-  { href: withBase("cfp"), current: "/cfp", label: "CFP" },
-  { href: withBase("#organizers"), current: "/#organizers", label: "Organizers" },
+  { href: withBase("cfp"), current: "/cfp", label: "Submission" },
   { href: withBase("speakers"), current: "/speakers", label: "Speakers" },
-  { href: withBase("news"), current: "/news", label: "Updates" },
+  { href: withBase("#committee"), current: "/#committee", label: "Committee" },
+  { href: withBase("#organizers"), current: "/#organizers", label: "Organizers" },
   { href: withBase("#sponsors"), current: "/#sponsors", label: "Sponsors" },
 ];
 ---
