@@ -182,9 +182,9 @@ export const organizers = [
   },
   {
     name: "Yu Chen",
-    affiliation: "Carnegie Mellon University",
+    affiliation: "University of Maryland",
     tag: "Junior Organizer",
-    focus: "Robot learning, applied optimization, and legged locomotion.",
+    focus: "Robot learning, applied optimization, and robot manipulation.",
     image: "assets/profile_organizer/yu-chen.png",
     url: "https://neuling-jpg.github.io/yu.github.io/",
   },
