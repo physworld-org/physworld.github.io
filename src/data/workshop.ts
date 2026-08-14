@@ -215,6 +215,14 @@ export const awardCommittee = [
     image: "assets/profile_speaker/paul.jpg",
     url: "https://pliang279.github.io/",
   },
+  {
+    name: "Manling Li",
+    affiliation: "Northwestern University",
+    tag: "Award Committee",
+    focus: "Multimodal and embodied reasoning, language-guided agents.",
+    image: "assets/profile_organizer/manling-li.jpg",
+    url: "https://limanling.github.io/",
+  },
 ];
 
 export const speakers = [
