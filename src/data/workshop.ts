@@ -223,6 +223,14 @@ export const awardCommittee = [
     image: "assets/profile_organizer/manling-li.jpg",
     url: "https://limanling.github.io/",
   },
+  {
+    name: "Qianqian Wang",
+    affiliation: "Harvard University",
+    tag: "Award Committee",
+    focus: "3D/4D reconstruction and persistent visual perception.",
+    image: "assets/profile_organizer/qianqian-wang.jpg",
+    url: "https://qianqianwang68.github.io/",
+  },
 ];
 
 export const speakers = [
