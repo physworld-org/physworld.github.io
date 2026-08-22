@@ -231,6 +231,14 @@ export const awardCommittee = [
     image: "assets/profile_organizer/qianqian-wang.jpg",
     url: "https://qianqianwang68.github.io/",
   },
+  {
+    name: "Ruohan Zhang",
+    affiliation: "Northwestern University",
+    tag: "Award Committee",
+    focus: "Robotics, embodied AI, and human-robot interaction.",
+    image: "assets/profile_organizer/ruohan-zhang.jpg",
+    url: "https://ruohanzhang.com/",
+  },
 ];
 
 export const speakers = [
