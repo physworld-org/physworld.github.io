@@ -13,7 +13,7 @@ export const workshop = {
   eventDates: "Dec 12 or 13, 2026 (TBD)",
   displayDates: "Dec 12 or 13 (TBD)",
   specialRequests: "Streaming and recording",
-  submissions: "Long papers up to 8 pages and extended abstracts up to 4 pages, in NeurIPS 2026 style.",
+  submissions: "Long papers up to 8 pages and extended abstracts up to 4 pages (Reference and Appendix are not included), in NeurIPS 2026 style.",
   review: "Double-blind review via OpenReview.",
   archivalStatus: "Archival & Non-archival; accepted papers will also be posted on the workshop website.",
   submissionUrl:
@@ -22,7 +22,7 @@ export const workshop = {
     { label: "Archival paper", value: "2026-09-09", display: "September 09, 2026" },
     { label: "Notification", value: "2026-10-09", display: "October 09, 2026" },
     { label: "Camera-ready", value: "2026-10-19", display: "October 19, 2026" },
-    { label: "Non-archival paper", value: "2026-10-29", display: "October 29, 2026" },
+    { label: "Non-archival paper", value: "2026-10-29", display: "Sept 29 - Oct 29, 2026" },
     { label: "Notification", value: "2026-11-09", display: "November 09, 2026" },
     { label: "Camera-ready", value: "2026-11-19", display: "November 19, 2026" },
   ],
