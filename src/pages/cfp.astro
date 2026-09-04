@@ -58,6 +58,7 @@ import { topics, workshop } from "../data/workshop";
           <a class="btn primary" href={workshop.submissionUrl} target="_blank" rel="noopener noreferrer">
             Submit on OpenReview
           </a>
+          <p class="submit-note">The non-archival submission venue will be open soon.</p>
         </div>
       </div>
     </div>
@@ -220,8 +221,16 @@ import { topics, workshop } from "../data/workshop";
 
   .submit-cta {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
     margin-top: 1.6rem;
+  }
+  .submit-note {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
   }
 
   .topic-grid {
