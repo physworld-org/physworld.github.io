@@ -141,6 +141,14 @@ export const organizers = [
     url: "https://ai.stanford.edu/~xtiange/",
   },
   {
+    name: "Ao Qu",
+    affiliation: "Massachusetts Institute of Technology",
+    tag: "Organizer",
+    focus: "Language agents, multisensory AI, and computational social science.",
+    image: "assets/profile_organizer/ao-qu.jpg",
+    url: "https://scholar.google.com/citations?user=qKdzvdwAAAAJ&hl=en",
+  },
+  {
     name: "Zihan Wang",
     affiliation: "Abaka AI / 2077AI",
     tag: "Organizer",
