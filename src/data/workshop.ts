@@ -204,6 +204,13 @@ export const organizers = [
     image: "assets/profile_organizer/zhiyan-li.jpg",
     url: "https://lzy001yuki.github.io/",
   },
+  {
+    name: "Zhuoyang Liu",
+    affiliation: "Peking University",
+    tag: "Junior Organizer",
+    focus: "Multimodal learning, foundation models, robotic manipulation.",
+    image: "assets/profile_organizer/zhuoyang-liu.jpg",
+  },
 ];
 
 export const awardCommittee = [
