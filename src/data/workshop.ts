@@ -315,6 +315,6 @@ export const sponsors = [
     name: "CyberBrain",
     commitment: "Workshop Sponsor",
     image: "assets/sponsor/cyberbrain_new.png",
-    url: "https://www.cyberbrain.ai/",
+    url: "https://cyberbrain.us/",
   },
 ];
