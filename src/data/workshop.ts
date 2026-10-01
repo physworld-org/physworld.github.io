@@ -22,7 +22,7 @@ export const workshop = {
     { label: "Archival paper", value: "2026-09-09", display: "September 09, 2026" },
     { label: "Notification", value: "2026-10-09", display: "October 09, 2026" },
     { label: "Camera-ready", value: "2026-10-19", display: "October 19, 2026" },
-    { label: "Non-archival paper", value: "2026-10-29", display: "Sept 29 - Oct 29, 2026" },
+    { label: "Non-archival paper", value: "2026-10-29", display: "Oct 09 - Oct 29, 2026" },
     { label: "Notification", value: "2026-11-09", display: "November 09, 2026" },
     { label: "Camera-ready", value: "2026-11-19", display: "November 19, 2026" },
   ],
