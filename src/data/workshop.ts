@@ -15,16 +15,13 @@ export const workshop = {
   specialRequests: "Streaming and recording",
   submissions: "Long papers up to 8 pages and extended abstracts up to 4 pages (Reference and Appendix are not included), in NeurIPS 2026 style.",
   review: "Double-blind review via OpenReview.",
-  archivalStatus: "Archival & Non-archival; accepted papers will also be posted on the workshop website.",
+  archivalStatus: "Non-archival. Workshop papers do not appear in the NeurIPS proceedings; accepted papers will be posted on the workshop website.",
   submissionUrl:
     "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/PhysWorldAI#tab-recent-activity",
   dates: [
-    { label: "Archival paper", value: "2026-09-09", display: "September 09, 2026" },
+    { label: "Submission deadline", value: "2026-09-09", display: "September 09, 2026" },
     { label: "Notification", value: "2026-09-29", display: "September 29, 2026" },
     { label: "Camera-ready", value: "2026-10-03", display: "October 03, 2026" },
-    { label: "Non-archival paper", value: "2026-10-29", display: "Oct 09 - Oct 29, 2026" },
-    { label: "Notification", value: "2026-11-09", display: "November 09, 2026" },
-    { label: "Camera-ready", value: "2026-11-19", display: "November 19, 2026" },
   ],
 };
 
