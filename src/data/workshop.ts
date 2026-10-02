@@ -15,7 +15,7 @@ export const workshop = {
   specialRequests: "Streaming and recording",
   submissions: "Long papers up to 8 pages and extended abstracts up to 4 pages (Reference and Appendix are not included), in NeurIPS 2026 style.",
   review: "Double-blind review via OpenReview.",
-  archivalStatus: "Non-archival. Workshop papers do not appear in the NeurIPS proceedings; accepted papers will be posted on the workshop website.",
+  archivalStatus: "All NeurIPS workshop papers are non-archival. Accepted papers will be made available on OpenReview and our workshop website.",
   submissionUrl:
     "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/PhysWorldAI#tab-recent-activity",
   dates: [
