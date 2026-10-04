@@ -21,7 +21,7 @@ export const workshop = {
   dates: [
     { label: "Submission deadline", value: "2026-09-09", display: "September 09, 2026" },
     { label: "Notification", value: "2026-09-29", display: "September 29, 2026" },
-    { label: "Camera-ready", value: "2026-10-03", display: "October 03, 2026" },
+    { label: "Camera-ready", value: "2026-10-09", display: "October 09, 2026" },
   ],
 };
 
