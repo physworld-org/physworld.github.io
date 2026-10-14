@@ -61,6 +61,21 @@ import { topics, workshop } from "../data/workshop";
           <p class="submit-note">Submissions for the NeurIPS 2026 workshop are closed.</p>
         </div>
       </div>
+
+      <aside class="poster-panel reveal" aria-labelledby="poster-title" id="poster-session">
+        <div class="poster-heading">
+          <h3 id="poster-title">Poster Session</h3>
+          <span class="poster-badge">Website only</span>
+        </div>
+        <p class="poster-format"><strong>Submission format:</strong> {workshop.submissions}</p>
+        <p class="poster-policy"><strong>Publication policy:</strong> Accepted poster submissions will be hosted on the workshop website only.</p>
+        <dl class="poster-dates">
+          <div><dt>Submission deadline</dt><dd><time datetime="2026-10-09">October 09, 2026</time></dd></div>
+          <div><dt>Notification</dt><dd><time datetime="2026-11-09">November 09, 2026</time></dd></div>
+          <div><dt>Camera-ready</dt><dd><time datetime="2026-11-19">November 19, 2026</time></dd></div>
+        </dl>
+        <a class="poster-link" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/PhysWorldAI_Poster" target="_blank" rel="noopener noreferrer">View poster venue on OpenReview <span aria-hidden="true">↗</span></a>
+      </aside>
     </div>
   </section>
 
@@ -155,6 +170,27 @@ import { topics, workshop } from "../data/workshop";
     margin-bottom: 1.25rem;
     line-height: 1.8;
   }
+
+  .poster-panel {
+    max-width: 740px;
+    margin: 1.75rem auto 0;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid rgba(154, 167, 255, 0.2);
+    border-left: 3px solid var(--violet);
+    border-radius: var(--radius);
+    background: rgba(154, 167, 255, 0.025);
+  }
+  .poster-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .8rem; }
+  .poster-heading h3 { font-family: var(--font-body); font-size: 1.05rem; color: var(--text); }
+  .poster-badge { color: var(--violet); font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; padding: .2rem .55rem; border: 1px solid rgba(154, 167, 255, .25); border-radius: 4px; white-space: nowrap; }
+  .poster-panel p { font-size: .86rem; line-height: 1.65; margin: 0 0 .55rem; }
+  .poster-dates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; padding: .9rem 0; border-block: 1px solid rgba(154, 167, 255, .12); }
+  .poster-dates dt { color: var(--text-muted); font-size: .72rem; margin-bottom: .25rem; }
+  .poster-dates dd { color: var(--text); font-size: .88rem; font-weight: 600; }
+  .poster-link { color: var(--violet); font-size: .83rem; font-weight: 600; }
+  .poster-link:hover { color: var(--mint); }
+  .poster-link:focus-visible { outline: 2px solid var(--violet); outline-offset: 4px; }
+  @media(max-width:620px) { .poster-panel { padding: 1.1rem; } .poster-dates { grid-template-columns: 1fr; gap: .7rem; } .poster-dates > div { display: flex; justify-content: space-between; gap: 1rem; } }
 
   .facts-grid {
     display: grid;
